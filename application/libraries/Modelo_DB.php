@@ -33,7 +33,7 @@ class Modelo_DB {
         }
     }
 
-    public function actualizar($data, $where, $valor = FALSE) {
+    public function editar($data, $where, $valor = FALSE) {
         $this->get_where($where, $valor);
         $update = $this->CI->db->update($this->tabla, $data);
         if ($update) {
@@ -54,6 +54,16 @@ class Modelo_DB {
         $this->get_where($where, $valor);
         $this->CI->db->limit(1);
         return $this->CI->db->get()->row_array();
+    }
+
+    public function eliminar($where, $valor = FALSE) {
+        $this->get_where($where, $valor);
+        $delete = $this->CI->db->delete($this->tabla);
+        if ($delete) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public function mostrar_todo($datos = FALSE, $order_by = FALSE) {
@@ -77,7 +87,7 @@ class Modelo_DB {
         if ($id == '') {
             $this->get_query();
             $this->get_where('t.' . $campo, $valor);
-            $this->limit(1);
+            // $this->limit(1);
             $resultSet = $this->CI->db->get()->row_array();
         } else {
             $this->get_query();

@@ -20,7 +20,7 @@ class Home extends CI_Controller {
         $this->items['active'] = 'rh';
         $this->items['menu'] = $this->smarty_tpl->view('menu_empleado', $this->items, TRUE);
     }
-	
+    
 	public function index()
 	{
         $this->load->model('m_recibo_honorario');

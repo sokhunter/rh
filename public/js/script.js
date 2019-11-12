@@ -30,3 +30,24 @@ $(document).ready(function() {
         }
     });
 });
+
+$("#validar_documento").on('click', function(){
+	$.post(base_url + 'c_usuario/validar_documento',
+			{documento: $('#documento').val()},
+	function(response) {
+		console.log(response);
+		if(response == null){
+			$('.validacion_doc').attr('disabled', false);
+			$('.validacion_doc').val('');
+		}else{
+			$('.validacion_doc').attr('disabled', true);
+			$('#razon_social').val(response.razon_social);
+			$('#direccion').val(response.direccion);
+			$('#nombre').val(response.nombre);
+			$('#a_paterno').val(response.a_paterno);
+			$('#a_materno').val(response.a_materno);
+			$('#email').val(response.email);
+		}
+	}, 'json');
+    return false;
+})
