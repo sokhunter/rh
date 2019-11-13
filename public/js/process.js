@@ -16,6 +16,7 @@ $(document).on('submit', '.sendForm', function() {
     {
         btn.removeAttr("disabled");
         frm.find('.response').html(data).hide().slideDown();
+        
     })
     .error(function(data, msg)
     {

@@ -36,14 +36,17 @@ class Login extends CI_Controller {
             EXIT;
         }
         $rol = $this->m_rol->mostrar('id', $usuario['rol_id']);
-        $sesion = array(
-                        'sys_id' => $usuario['id'],
-                        'sys_usuario' => $usuario['usuario'],
-                        'sys_email' => $usuario['email'],
-                        'sys_imagen' => $usuario['imagen'],
-                        'sys_rol_id' => $usuario['rol_id'],
-                        'sys_rol' => $rol['nombre'],
-                    );
+        if($usuario['rol_id'] == 2){
+            $this->load->model('m_tasa_descuento');
+            $tasa = $this->m_tasa_descuento->mostrar('empresa_id', $usuario['id']);
+            $sesion['sys_tasa'] = $tasa['valor'];
+        }
+        $sesion['sys_id'] = $usuario['id'];
+        $sesion['sys_usuario'] = $usuario['usuario'];
+        $sesion['sys_email'] = $usuario['email'];
+        $sesion['sys_imagen'] = $usuario['imagen'];
+        $sesion['sys_rol_id'] = $usuario['rol_id'];
+        $sesion['sys_rol'] = $rol['nombre'];
         $this->session->set_userdata($sesion);
         // redirect(base_url() . $rol['nombre'] . '/home', 'refresh');
         echo direccionar(base_url() . $rol['nombre'] . '/home');

@@ -16,4 +16,13 @@ class M_empresa extends Modelo_DB {
         $this->CI->db->join('usuario u', 'u.id = t.id', 'inner');
     }
 
+    public function listar_por_empleado($empleado_id = ""){
+        $this->CI->db->select('razon_social, documento, email, direccion');
+        $this->get_query();
+        $this->CI->db->join('empresa_empleado ee', 'ee.empresa_id = t.id', 'inner')
+                ->where('ee.empleado_id', $empleado_id);
+        return $this->CI->db->get()->result_array();
+
+    }
+
 }

@@ -79,7 +79,7 @@ class Empleado extends CI_Controller {
         $response = "No se pudo procesar la acción";
         $dni = $this->input->post('dni');
         if(!$this->m_usuario->existe_campo('documento', $dni)){
-            $response = $this->b_empleado->agregar();
+            $this->b_empleado->agregar();
         }
         $response = $this->b_empresa->agregar_empleado();
         echo $response;

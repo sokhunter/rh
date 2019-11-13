@@ -71,7 +71,7 @@ class Empresa extends CI_Controller {
     }
 
     public function guardar(){
-        $this->load->library('b_empresa');
+        $this->load->library(array('b_empresa'));
         $id = $this->input->post('id');
         $response = "No se pudo procesar la acción";
         if($id == ""){

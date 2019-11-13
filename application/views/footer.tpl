@@ -9,6 +9,8 @@
         <script type="text/javascript" src="{$base_url}public/plugins/bootstrap-4.3.1/js/bootstrap.min.js"></script>
         {* DATATABLE *}
         <script type="text/javascript" src="{$base_url}public/plugins/DataTables/datatables.min.js"></script>
+        {* NUMERIC *}
+        <script type="text/javascript" src="{$base_url}public/js/numeric.js"></script>
         {* SCRIPT FORM *}
         <script type="text/javascript" src="{$base_url}public/js/process.js"></script>
         {* SCRIPT GENERAL *}

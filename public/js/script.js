@@ -51,3 +51,9 @@ $("#validar_documento").on('click', function(){
 	}, 'json');
     return false;
 })
+
+$(".tasa").numeric({ 
+	decimal : ".",
+	negative: false,
+	decimalPlaces: 7
+});

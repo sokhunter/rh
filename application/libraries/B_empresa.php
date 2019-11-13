@@ -13,6 +13,16 @@ class B_empresa {
 		}
 		$this->CI->items['session'] = $this->CI->session->userdata();
     }
+
+    function listar_por_empleado($empleado_id = ""){
+        $listado = $this->CI->m_empresa->listar_por_empleado($empleado_id);
+        $i = 0;
+        foreach ($listado as $l) {
+            $listado[$i]['btn'] = '<a href="#" class="btn btn-sm btn-info">Generar RH</a>';
+            $i++;
+        }
+        return $listado;
+    }
     
 	function agregar(){
         $this->CI->load->model(array('m_usuario', 'm_empresa'));
@@ -38,6 +48,8 @@ class B_empresa {
         $result = $this->CI->m_empresa->agregar($d_empresa);
         
         if($result !== FALSE) {
+            $this->CI->load->library('b_tasa_descuento');
+            $this->CI->b_tasa_descuento->agregar($usuario_id);
             return "Registro exitoso";
         }else{
             return "Ha ocurrido un error";

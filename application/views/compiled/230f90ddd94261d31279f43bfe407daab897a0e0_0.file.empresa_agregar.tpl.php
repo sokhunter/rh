@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-12 01:59:49
+<?php /* Smarty version 3.1.27, created on 2019-11-13 16:38:30
          compiled from "C:\wamp\www\rh\application\views\empresa_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:248595dca121593f518_14186693%%*/
+/*%%SmartyHeaderCode:112935dcc3186dbd0e1_47885111%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '230f90ddd94261d31279f43bfe407daab897a0e0' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empresa_agregar.tpl',
-      1 => 1573523988,
+      1 => 1573530668,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '248595dca121593f518_14186693',
+  'nocache_hash' => '112935dcc3186dbd0e1_47885111',
   'variables' => 
   array (
     'get_url' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dca1215a5d190_18089509',
+  'unifunc' => 'content_5dcc318700fe67_22499723',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dca1215a5d190_18089509')) {
-function content_5dca1215a5d190_18089509 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dcc318700fe67_22499723')) {
+function content_5dcc318700fe67_22499723 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '248595dca121593f518_14186693';
+$_smarty_tpl->properties['nocache_hash'] = '112935dcc3186dbd0e1_47885111';
 ?>
 <div class="container">
 	<p class="h2">
@@ -50,9 +50,9 @@ echo $_smarty_tpl->tpl_vars['registro']->value['razon_social'];
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="ruc" class="col-4 col-form-label">RUC</label>
+							<label for="documento" class="col-4 col-form-label">RUC</label>
 							<div class="col-4">
-								<input type="text" name="ruc" class="form-control" id="ruc" placeholder="RUC" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="ruc" class="form-control" id="documento" placeholder="RUC" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 }?>">
 							</div>
