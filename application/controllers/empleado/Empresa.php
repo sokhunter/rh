@@ -29,7 +29,7 @@ class Empresa extends CI_Controller {
         $data['titulo_pagina'] = 'Lista';
         $data['titulo_tabla'] = 'Listado de empresas';
         // ------------------------------------------------------------ //
-        $listado = $this->b_empresa->listar_por_empleado($this->items['session']['sys_id']);
+        $listado = $this->b_empresa->listar_por_empleado($this->items['session']['sys_id'], $this->items['get_url']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
         $this->table->set_heading('Empresa', 'RUC', 'Correo', 'Dirección', 'Opciones');

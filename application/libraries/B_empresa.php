@@ -14,11 +14,12 @@ class B_empresa {
 		$this->CI->items['session'] = $this->CI->session->userdata();
     }
 
-    function listar_por_empleado($empleado_id = ""){
+    function listar_por_empleado($empleado_id = "", $url = ""){
         $listado = $this->CI->m_empresa->listar_por_empleado($empleado_id);
         $i = 0;
         foreach ($listado as $l) {
-            $listado[$i]['btn'] = '<a href="#" class="btn btn-sm btn-info">Generar RH</a>';
+            $listado[$i]['btn'] = '<a href="' . $url . 'rh/emitir/' . $l['id'] . '" class="btn btn-sm btn-info">Generar RH</a>';
+            unset($listado[$i]['id']);
             $i++;
         }
         return $listado;

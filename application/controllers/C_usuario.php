@@ -21,16 +21,20 @@ class C_usuario extends CI_Controller {
     public function validar_documento(){
         $this->load->model(array('m_usuario', 'm_empresa', 'm_empleado'));
         $documento = $this->input->post('documento');
+        $rol = $this->input->post('rol');
         $usuario = $this->m_usuario->mostrar('t.documento', $documento);
+        $result = null;
         if($usuario != null){
-            if($usuario['rol_id'] == 2){ // empresa
+            if($rol == 2){ // empresa
                 $datos = $this->m_empresa->mostrar('t.id', $usuario['id']);
             }else{ // empleado
                 $datos = $this->m_empleado->mostrar('t.id', $usuario['id']);
             }
-            $usuario = array_merge($usuario, $datos);
+            if($datos != null){
+                $result = array_merge($usuario, $datos);
+            }
         }
-        echo json_encode($usuario);
+        echo json_encode($result);
     }
 
 }

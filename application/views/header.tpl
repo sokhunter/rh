@@ -38,6 +38,8 @@
         <link rel="stylesheet" type="text/css" href="{$base_url}public/plugins/fontawesome-free-5.11.2-web/css/all.min.css">
         {* DATATABLES *}
         <link rel="stylesheet" type="text/css" href="{$base_url}public/plugins/DataTables/datatables.css">
+        {* FORMSTEPS *}
+        <link rel="stylesheet" type="text/css" href="{$base_url}public/css/formSteps.css">
         {* STYLE *}
         <link rel="stylesheet" type="text/css" href="{$base_url}public/css/style.css">
     </head>

@@ -14,7 +14,7 @@
 								<input type="text" name="dni" class="form-control" id="documento" placeholder="DNI"  value="{if isset($registro)}{$registro.documento}{/if}">
 							</div>
 							<div class="col-2">
-								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm">Validar</a>
+								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="3">Validar</a>
 							</div>
 						</div>
 						<div class="form-group row">
