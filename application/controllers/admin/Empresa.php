@@ -30,7 +30,8 @@ class Empresa extends CI_Controller {
         $data['titulo_tabla'] = 'Listado de empresas';
         $data['btn_agregar'] = base_url() . 'admin/empresa/agregar';
         // ------------------------------------------------------------ //
-        $listado = $this->m_empresa->mostrar_todo('razon_social, documento, email, direccion');
+        // $listado = $this->m_empresa->mostrar_todo('razon_social, documento, email, direccion');
+        $listado = $this->m_empresa->listar('razon_social, documento, email, direccion');
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
         $this->table->set_heading('Empresa', 'RUC', 'Correo', 'Dirección');
@@ -79,8 +80,11 @@ class Empresa extends CI_Controller {
         }else{
             $response = $this->b_empresa->editar();
         }
-        echo $response;
-        echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empresa/listar');
+        $response = json_decode($response);
+        echo $response->msg;
+        if($response->status != 400){
+            echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empresa/listar');
+        }
     }
 
 }

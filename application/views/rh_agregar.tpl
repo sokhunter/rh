@@ -118,9 +118,9 @@
 							</div>
 							<div class="row">
 								<div class="col-10 text-right">
-									<p>Total por honorarios</p>
+									<p>Subtotal</p>
 									<p>Retencion (8%)</p>
-									<p>Total neto</p>
+									<p>Total</p>
 								</div>
 								<div class="col-2 rh_totales">
 									<p><b>1,600.00</b><b> Soles</b></p>
@@ -150,3 +150,5 @@
 		</div>
 	</div>
 </div>
+{* FORMSTEPS *}
+<script type="text/javascript" src="{$base_url}public/js/formSteps.js"></script>

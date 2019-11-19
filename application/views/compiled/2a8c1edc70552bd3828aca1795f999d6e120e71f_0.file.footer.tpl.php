@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-17 23:19:05
+<?php /* Smarty version 3.1.27, created on 2019-11-19 17:21:34
          compiled from "C:\wamp\www\rh\application\views\footer.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:296385dd1d569296655_56753427%%*/
+/*%%SmartyHeaderCode:14275dd4249e2df9e9_08953297%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2a8c1edc70552bd3828aca1795f999d6e120e71f' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\footer.tpl',
-      1 => 1574032734,
+      1 => 1574184049,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '296385dd1d569296655_56753427',
+  'nocache_hash' => '14275dd4249e2df9e9_08953297',
   'variables' => 
   array (
     'base_url' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd1d5692e2661_61651289',
+  'unifunc' => 'content_5dd4249e70b7a9_90214336',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd1d5692e2661_61651289')) {
-function content_5dd1d5692e2661_61651289 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd4249e70b7a9_90214336')) {
+function content_5dd4249e70b7a9_90214336 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '296385dd1d569296655_56753427';
+$_smarty_tpl->properties['nocache_hash'] = '14275dd4249e2df9e9_08953297';
 ?>
         <footer class="bg-secondary text-white text-center">
             <p>Todos los derechos reservados. Copyright <?php echo date('Y');?>
@@ -61,11 +61,6 @@ public/js/numeric.js"><?php echo '</script'; ?>
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 public/js/process.js"><?php echo '</script'; ?>
->
-        
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/js/formSteps.js"><?php echo '</script'; ?>
 >
         
         <?php echo '<script'; ?>

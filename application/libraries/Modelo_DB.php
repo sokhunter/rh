@@ -44,7 +44,6 @@ class Modelo_DB {
     }
 
     public function mostrar($where, $valor = FALSE, $datos = FALSE) {
-
         if ($datos){
             $this->CI->db->select($datos);
         } else {
@@ -65,6 +64,40 @@ class Modelo_DB {
             return false;
         }
     }
+
+    public function listar($datos = FALSE, $where = FALSE, $order_by = FALSE) {
+        if ($datos){
+            $this->CI->db->select($datos);
+        } else {
+            $this->CI->db->select();
+        }
+        $this->get_query();
+        if($where){
+            $this->get_where($where);
+        }
+        if($order_by){
+            foreach ($order_by as $order) {
+                $this->CI->db->order_by($order['order'], $order['type']);
+            }
+        }
+        return $this->CI->db->get()->result_array();
+    }
+
+    // public function mostrar_cuando($where, $datos = FALSE, $order_by = FALSE) {
+    //     if ($datos){
+    //         $this->CI->db->select($datos);
+    //     } else {
+    //         $this->CI->db->select();
+    //     }
+    //     $this->get_query();
+    //     $this->get_where($where);
+    //     if($order_by){
+    //         foreach ($order_by as $order) {
+    //             $this->CI->db->order_by($order['order'], $order['type']);
+    //         }
+    //     }
+    //     return $this->CI->db->get()->result_array();
+    // }
     
     public function mostrar_todo($datos = FALSE, $order_by = FALSE) {
         
@@ -73,7 +106,6 @@ class Modelo_DB {
         } else {
             $this->CI->db->select();
         }
-
         $this->get_query();
         if($order_by){
             foreach ($order_by as $order) {
@@ -107,78 +139,6 @@ class Modelo_DB {
         }
     }
 
-    public function buscar($like) {
-
-        $this->get_query();
-
-        $this->get_like($like);
-
-        return $this->CI->db->get()->result_array();
-
-    }
-
-    public function buscar_cuando($where, $like, $datos = FALSE, $order_by = FALSE) {
-        
-        if ($datos){
-            $this->CI->db->select($datos);
-        } else {
-            $this->CI->db->select();
-        }
-
-        $this->get_query();
-
-        if ($like) {
-
-            $this->CI->db->group_start();
-
-            $this->get_like($like);
-
-            $this->CI->db->group_end();
-        }
-
-        if ($where) {
-
-            $this->CI->db->group_start();
-
-            $this->get_where($where);
-
-            $this->CI->db->group_end();
-        }
-        if($order_by){
-            foreach ($order_by as $order) {
-                $this->CI->db->order_by($order['order'], $order['type']);
-            }
-        }
-        return $this->CI->db->get()->result_array();
-    }
-
-    public function total_filas($where = FALSE, $like = FALSE) {
-
-        $this->get_query();
-
-        if ($like) {
-
-            $this->CI->db->group_start();
-
-            $this->get_like($like);
-
-            $this->CI->db->group_end();
-
-        }
-
-        if ($where) {
-
-            $this->CI->db->group_start();
-
-            $this->get_where($where);
-
-            $this->CI->db->group_end();
-
-        }
-
-        return $this->CI->db->get()->num_rows();
-
-    }
 
     public function get_where($where, $value = FALSE) {
         if (is_array($where)) {
@@ -197,14 +157,6 @@ class Modelo_DB {
                 $where = $this->tabla_id;
             }
             $this->CI->db->where($where, $value);
-        }
-    }
-
-    public function get_like($like) {
-        if (is_array($like)) {
-            foreach ($like as $k => $v) {
-                $this->CI->db->or_like($k, $v);
-            }
         }
     }
 

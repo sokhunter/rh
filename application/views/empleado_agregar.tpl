@@ -9,9 +9,9 @@
 					<form class="sendForm" action="{$get_url}empleado/guardar" method="post">
 						<div class="response"></div>
 						<div class="form-group row">
-							<label for="documento" class="col-4 col-form-label">DNI</label>
+							<label for="documento" class="col-4 col-form-label">N° Documento</label>
 							<div class="col-4">
-								<input type="text" name="dni" class="form-control" id="documento" placeholder="DNI"  value="{if isset($registro)}{$registro.documento}{/if}">
+								<input type="text" name="dni" class="form-control" id="documento" placeholder="N° Documento"  value="{if isset($registro)}{$registro.documento}{/if}">
 							</div>
 							<div class="col-2">
 								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="3">Validar</a>
@@ -20,25 +20,25 @@
 						<div class="form-group row">
 							<label for="nombre" class="col-4 col-form-label">Nombre</label>
 							<div class="col-6">
-								<input {if !isset($registro)}disabled=""{/if} type="text" name="nombre" class="form-control validacion_doc" id="nombre" placeholder="Nombre"  value="{if isset($registro)}{$registro.nombre}{/if}">
+								<input type="text" name="nombre" class="form-control validacion_doc" id="nombre" placeholder="Nombre"  value="{if isset($registro)}{$registro.nombre}{/if}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="a_paterno" class="col-4 col-form-label">Apellido paterno</label>
 							<div class="col-5">
-								<input disabled="" type="text" name="a_paterno" class="form-control validacion_doc" id="a_paterno" placeholder="Apellido paterno"  value="{if isset($registro)}{$registro.a_paterno}{/if}">
+								<input type="text" name="a_paterno" class="form-control validacion_doc" id="a_paterno" placeholder="Apellido paterno"  value="{if isset($registro)}{$registro.a_paterno}{/if}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="a_materno" class="col-4 col-form-label">Apellido materno</label>
 							<div class="col-5">
-								<input disabled="" type="text" name="a_materno" class="form-control validacion_doc" id="a_materno" placeholder="Apellido materno"  value="{if isset($registro)}{$registro.a_materno}{/if}">
+								<input type="text" name="a_materno" class="form-control validacion_doc" id="a_materno" placeholder="Apellido materno"  value="{if isset($registro)}{$registro.a_materno}{/if}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="email" class="col-4 col-form-label">Correo</label>
 							<div class="col-5">
-								<input disabled="" type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="{if isset($registro)}{$registro.email}{/if}">
+								<input type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="{if isset($registro)}{$registro.email}{/if}">
 							</div>
 						</div>
 						{if isset($session_id)}

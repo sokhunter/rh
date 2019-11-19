@@ -109,3 +109,4 @@ $("#nextBtn").on("click", function(){
 	$(".rh_totales").html(totales);
 	$(".rh_fecha").html($("#f_emision").val());
 });
+

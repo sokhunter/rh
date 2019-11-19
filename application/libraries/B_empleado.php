@@ -22,7 +22,13 @@ class B_empleado {
         $dni = $this->CI->input->post('dni');
         $email = $this->CI->input->post('email');
         // VALIDACIONES
-        //validar dni duplicado
+
+        if($this->CI->m_usuario->existe_campo('documento', $dni)){
+            $response['msg'] = "El DNI ingresado ya se encuentra registrado";
+            $response['status'] = 400;
+            return json_encode($response);
+        }
+
         $d_usuario['email'] = $email;
         $d_usuario['documento'] = $dni;
         $d_empleado['nombre'] = $nombre;
@@ -34,10 +40,15 @@ class B_empleado {
         $usuario_id = $this->CI->m_usuario->agregar($d_usuario);
         $d_empleado['id'] = $usuario_id;
         $result = $this->CI->m_empleado->agregar($d_empleado);
+
         if($result !== FALSE) {
-            return "Registro exitoso";
+            $response['msg'] = "Registro exitoso";
+            $response['status'] = 200;
+            return json_encode($response);
         }else{
-            return "Ha ocurrido un error";
+            $response['msg'] = "Ha ocurrido un error";
+            $response['status'] = 500;
+            return json_encode($response);
         }
 	}
 

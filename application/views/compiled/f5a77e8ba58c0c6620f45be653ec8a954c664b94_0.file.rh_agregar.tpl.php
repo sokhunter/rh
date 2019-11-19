@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-18 01:04:39
+<?php /* Smarty version 3.1.27, created on 2019-11-19 20:42:36
          compiled from "C:\wamp\www\rh\application\views\rh_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:121595dd1ee276aa622_56703301%%*/
+/*%%SmartyHeaderCode:156015dd453bc8f1341_40123481%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5a77e8ba58c0c6620f45be653ec8a954c664b94' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\rh_agregar.tpl',
-      1 => 1574039045,
+      1 => 1574184054,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '121595dd1ee276aa622_56703301',
+  'nocache_hash' => '156015dd453bc8f1341_40123481',
   'variables' => 
   array (
     'get_url' => 0,
@@ -22,16 +22,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'monedas' => 0,
     'm' => 0,
     'empleado' => 0,
+    'base_url' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd1ee28533610_33348874',
+  'unifunc' => 'content_5dd453bd0f6906_41860203',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd1ee28533610_33348874')) {
-function content_5dd1ee28533610_33348874 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd453bd0f6906_41860203')) {
+function content_5dd453bd0f6906_41860203 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '121595dd1ee276aa622_56703301';
+$_smarty_tpl->properties['nocache_hash'] = '156015dd453bc8f1341_40123481';
 ?>
 <div class="container">
 	<p class="h2">
@@ -132,9 +133,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['observacion'];
 							<div class="form-group row">
 								<label for="retencion" class="col-4 col-form-label">Retención (8%)</label>
 								<div class="col-5">
-									<input type="checkbox" name="retencion" class="" id="retencion" placeholder="Retención"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
-echo $_smarty_tpl->tpl_vars['registro']->value['retencion'];
-}?>">
+									<input type="checkbox" name="retencion" class="" id="retencion" placeholder="Retención">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -202,9 +201,9 @@ echo $_smarty_tpl->tpl_vars['registro']->value['id'];
 							</div>
 							<div class="row">
 								<div class="col-10 text-right">
-									<p>Total por honorarios</p>
+									<p>Subtotal</p>
 									<p>Retencion (8%)</p>
-									<p>Total neto</p>
+									<p>Total</p>
 								</div>
 								<div class="col-2 rh_totales">
 									<p><b>1,600.00</b><b> Soles</b></p>
@@ -233,6 +232,11 @@ echo $_smarty_tpl->tpl_vars['registro']->value['id'];
 			</div>
 		</div>
 	</div>
-</div><?php }
+</div>
+
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+public/js/formSteps.js"><?php echo '</script'; ?>
+><?php }
 }
 ?>

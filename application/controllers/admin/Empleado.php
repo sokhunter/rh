@@ -30,7 +30,7 @@ class Empleado extends CI_Controller {
         $data['titulo_tabla'] = 'Listado de empleados';
         $data['btn_agregar'] = base_url() . 'admin/empleado/agregar';
         // ------------------------------------------------------------ //
-        $listado = $this->m_empleado->listar();
+        $listado = $this->m_empleado->listar("CONCAT(t.nombre, ' ', t.a_paterno, ' ', t.a_materno), u.documento, u.email");
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
         $this->table->set_heading('Nombre', 'Documento', 'Correo');
@@ -79,8 +79,11 @@ class Empleado extends CI_Controller {
         }else{
             $response = $this->b_empleado->editar();
         }
-        echo $response;
-        echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+        $response = json_decode($response);
+        echo $response->msg;
+        if($response->status != 400){
+            echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+        }
     }
 
 }

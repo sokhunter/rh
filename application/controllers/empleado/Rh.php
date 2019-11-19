@@ -27,7 +27,8 @@ class Rh extends CI_Controller {
         $this->load->model('m_recibo_honorario');
         $this->load->library(array('table', 'b_rh'));
         $data['titulo_pagina'] = 'Lista';
-        $data['titulo_tabla'] = 'Listado de recibos pr honorario';
+        $data['titulo_tabla'] = 'Listado de recibos por honorario';
+        $data['btn_agregar'] = base_url() . 'empleado/rh/emitir';
         // ------------------------------------------------------------ //
         $listado = $this->b_rh->listar_por_empleado($this->items['session']['sys_id']);
         $template = array('table_open' => '<table class="table datatable">');
@@ -47,7 +48,8 @@ class Rh extends CI_Controller {
         // ------------------------------------------------------------ //
     	$data['empleado'] = $this->m_empleado->mostrar('t.id', $this->items['session']['sys_id']);
     	$data['empresa'] = $this->m_empresa->mostrar('t.id', $empresa_id);
-    	$data['monedas'] = $this->m_moneda->mostrar_todo();
+        // $data['monedas'] = $this->m_moneda->mostrar_todo();
+    	$data['monedas'] = $this->m_moneda->listar();
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
         $this->smarty_tpl->view('header', $data);
@@ -57,13 +59,8 @@ class Rh extends CI_Controller {
 
     public function guardar(){
     	$this->load->library('b_rh');
-        $id = $this->input->post('id');
         $response = "No se pudo procesar la acción";
-        if($id == ""){
-            $response = $this->b_rh->agregar();
-        }else{
-            $response = $this->b_rh->editar();
-        }
+        $response = $this->b_rh->agregar();
         echo $response;
         echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'rh/listar');
     }

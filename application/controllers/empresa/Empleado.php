@@ -30,7 +30,7 @@ class Empleado extends CI_Controller {
         $data['titulo_tabla'] = 'Listado de empleados';
         $data['btn_agregar'] = base_url() . 'empresa/empleado/agregar';
         // ------------------------------------------------------------ //
-        $listado = $this->m_empleado->listar();
+        $listado = $this->m_empleado->listar("CONCAT(t.nombre, ' ', t.a_paterno, ' ', t.a_materno), u.documento, u.email");
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
         $this->table->set_heading('Nombre', 'Documento', 'Correo');
@@ -49,7 +49,8 @@ class Empleado extends CI_Controller {
         $data['titulo_pagina'] = 'Agregar empleado';
         // ------------------------------------------------------------ //
         $data['session_id'] = $this->session->userdata('sys_id');
-        $data['cargos'] = $this->m_cargo->mostrar_todo();
+        // $data['cargos'] = $this->m_cargo->mostrar_todo();
+        $data['cargos'] = $this->m_cargo->listar();
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
         $this->smarty_tpl->view('header', $data);

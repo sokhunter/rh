@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-13 16:38:30
+<?php /* Smarty version 3.1.27, created on 2019-11-19 21:33:43
          compiled from "C:\wamp\www\rh\application\views\empresa_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:112935dcc3186dbd0e1_47885111%%*/
+/*%%SmartyHeaderCode:286775dd45fb7b34584_79773393%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '230f90ddd94261d31279f43bfe407daab897a0e0' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empresa_agregar.tpl',
-      1 => 1573530668,
+      1 => 1574199220,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '112935dcc3186dbd0e1_47885111',
+  'nocache_hash' => '286775dd45fb7b34584_79773393',
   'variables' => 
   array (
     'get_url' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dcc318700fe67_22499723',
+  'unifunc' => 'content_5dd45fb7c361d9_88997874',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dcc318700fe67_22499723')) {
-function content_5dcc318700fe67_22499723 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd45fb7c361d9_88997874')) {
+function content_5dd45fb7c361d9_88997874 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '112935dcc3186dbd0e1_47885111';
+$_smarty_tpl->properties['nocache_hash'] = '286775dd45fb7b34584_79773393';
 ?>
 <div class="container">
 	<p class="h2">
@@ -42,26 +42,21 @@ $_smarty_tpl->properties['nocache_hash'] = '112935dcc3186dbd0e1_47885111';
 empresa/guardar" method="post">
 						<div class="response"></div>
 						<div class="form-group row">
-							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
-							<div class="col-6">
-								<input type="text" name="razon_social" class="form-control" id="razon_social" placeholder="Razón Social" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
-echo $_smarty_tpl->tpl_vars['registro']->value['razon_social'];
-}?>">
-							</div>
-						</div>
-						<div class="form-group row">
 							<label for="documento" class="col-4 col-form-label">RUC</label>
 							<div class="col-4">
-								<input type="text" name="ruc" class="form-control" id="documento" placeholder="RUC" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="documento" class="form-control" id="documento" placeholder="RUC"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 }?>">
 							</div>
+							<!-- <div class="col-2">
+								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="2">Validar</a>
+							</div> -->
 						</div>
 						<div class="form-group row">
-							<label for="imagen" class="col-4 col-form-label">Nombre</label>
-							<div class="col-5">
-								<input type="file" name="imagen" class="form-control" id="imagen" placeholder="Nombre" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
-echo $_smarty_tpl->tpl_vars['registro']->value['imagen'];
+							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
+							<div class="col-6">
+								<input type="text" name="razon_social" class="form-control validacion_doc" id="razon_social" placeholder="Razón Social" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+echo $_smarty_tpl->tpl_vars['registro']->value['razon_social'];
 }?>">
 							</div>
 						</div>
@@ -76,7 +71,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['email'];
 						<div class="form-group row">
 							<label for="direccion" class="col-4 col-form-label">Dirección</label>
 							<div class="col-8">
-								<input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="direccion" class="form-control validacion_doc" id="direccion" placeholder="Dirección" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['direccion'];
 }?>">
 							</div>

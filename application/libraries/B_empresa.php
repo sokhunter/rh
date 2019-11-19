@@ -28,13 +28,17 @@ class B_empresa {
 	function agregar(){
         $this->CI->load->model(array('m_usuario', 'm_empresa'));
         $razon_social = $this->CI->input->post('razon_social');
-        $ruc = $this->CI->input->post('ruc');
+        $ruc = $this->CI->input->post('documento');
         $imagen = $this->CI->input->post('imagen');
         $email = $this->CI->input->post('email');
         $direccion = $this->CI->input->post('direccion');
         // VALIDACIONES
         
-        //validar ruc duplicado
+        if($this->CI->m_usuario->existe_campo('documento', $ruc)){
+            $response['msg'] = "El RUC ingresado ya se encuentra registrado";
+            $response['status'] = 400;
+            return json_encode($response);
+        }
 
         $d_usuario['email'] = $email;
         $d_usuario['documento'] = $ruc;
@@ -51,9 +55,13 @@ class B_empresa {
         if($result !== FALSE) {
             $this->CI->load->library('b_tasa_descuento');
             $this->CI->b_tasa_descuento->agregar($usuario_id);
-            return "Registro exitoso";
+            $response['msg'] = "Registro exitoso";
+            $response['status'] = 200;
+            return json_encode($response);
         }else{
-            return "Ha ocurrido un error";
+            $response['msg'] = "Ha ocurrido un error";
+            $response['status'] = 500;
+            return json_encode($response);
         }
 	}
 

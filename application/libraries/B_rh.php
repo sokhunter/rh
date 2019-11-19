@@ -14,6 +14,17 @@ class B_rh {
 		$this->CI->items['session'] = $this->CI->session->userdata();
     }
 
+    function listar_por_empresa($empresa_id = "", $url = ""){
+        $listado = $this->CI->m_recibo_honorario->listar_por_empresa($empresa_id);
+        $i = 0;
+        foreach ($listado as $l) {
+            unset($listado[$i]['id']);
+            unset($listado[$i]['f_adelanto']);
+            $i++;
+        }
+        return $listado;
+    }
+
     function listar_por_empleado($empleado_id = "", $url = ""){
         $listado = $this->CI->m_recibo_honorario->listar_por_empleado($empleado_id);
         $i = 0;
@@ -25,8 +36,20 @@ class B_rh {
         return $listado;
     }
 
+    function listar_cartera($fecha = "", $empleado_doc = "", $empresa_id = ""){
+        $listado = $this->CI->m_recibo_honorario->listar_cartera($fecha, $empleado_doc, $empresa_id);
+        $i = 0;
+        foreach ($listado as $l) {
+            // $listado[$i]['btn'] = '<a href="' . $url . 'rh/pago/' . $l['id'] . '" class="btn btn-sm btn-info">Ingresar Pago</a>';
+            unset($listado[$i]['id']);
+            $listado[$i]['estado'] = "pendiente";
+            $i++;
+        }
+        return $listado;
+    }
+
 	function agregar(){
-        $this->CI->load->model(array('m_recibo_honorario', 'm_usuario'));
+        $this->CI->load->model(array('m_recibo_honorario', 'm_usuario', 'm_tasa_descuento', 'm_costo'));
         $documento = $this->CI->input->post('documento');
         $razon_social = $this->CI->input->post('razon_social');
         $direccion = $this->CI->input->post('direccion');
@@ -57,6 +80,29 @@ class B_rh {
             $d_rh['retencion'] = $total * 0.08;
         }
 
+        // PAGO ADELANTADO
+        $monto = $total - $d_rh['retencion'];
+        $tasa = $this->CI->m_tasa_descuento->mostrar('t.empresa_id', $empresa['id']);
+        $tea = $tasa['valor'];
+        $dias = floor(abs((strtotime($f_pago)  - strtotime($f_adelanto)) / 86400));
+        $tep = pow(1 + $tea, $dias / 360) - 1;
+        $dp = $tep / (1 + $tep);
+        $desc = $monto * $dp;
+        $Vneto = $monto - $desc;
+
+        // $costos = $this->CI->m_costo->mostrar_cuando(array('empresa_id' => $empresa['id']));
+        $costos = $this->CI->m_costo->listar(FALSE, array('empresa_id' => $empresa['id']));
+        $cIniciales = 0;
+        $cFinales = 0;
+        foreach ($costos as $c) {
+            $cIniciales += $c['inicial'] ? $c['monto'] : 0;
+            $cFinales += $c['inicial'] ? 0 : $c['monto'];
+        }
+
+        $d_rh['costos_iniciales'] = $cIniciales;
+        $d_rh['costos_finales'] = $cFinales;
+        $d_rh['neto'] = $Vneto;
+
         $result = $this->CI->m_recibo_honorario->agregar($d_rh);
         
         if($result !== FALSE) {
@@ -66,29 +112,4 @@ class B_rh {
         }
 	}
 
-    // function editar(){
-    //     $this->CI->load->model(array('m_usuario', 'm_empresa'));
-    //     $id = $this->CI->input->post('id');
-    //     $razon_social = $this->CI->input->post('razon_social');
-    //     $ruc = $this->CI->input->post('ruc');
-    //     $imagen = $this->CI->input->post('imagen');
-    //     $email = $this->CI->input->post('email');
-    //     $direccion = $this->CI->input->post('direccion');
-
-    //     //validar ruc duplicado
-
-    //     $d_usuario['email'] = $email;
-    //     $d_usuario['documento'] = $ruc;
-    //     $d_empresa['razon_social'] = $razon_social;
-    //     $d_empresa['direccion'] = $direccion;
-        
-    //     $result = $this->CI->m_usuario->editar($d_usuario, $id);
-    //     $result = $this->CI->m_empresa->editar($d_empresa, $id);
-
-    //     if($result !== FALSE) {
-    //         return "Edición exitosa";
-    //     }else{
-    //         return "Ha ocurrido un error";
-    //     }
-    // }
 }

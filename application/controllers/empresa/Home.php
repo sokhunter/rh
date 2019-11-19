@@ -17,6 +17,7 @@ class Home extends CI_Controller {
         }
 		$this->items['session'] = $this->session->userdata();
         $this->items['base_url'] = base_url();
+        $this->items['get_url'] = base_url() . 'empresa';
         $this->items['active'] = 'rh';
         $this->items['menu'] = $this->smarty_tpl->view('menu_empresa', $this->items, TRUE);
     }
@@ -24,11 +25,12 @@ class Home extends CI_Controller {
 	public function index()
 	{
         $this->load->model('m_recibo_honorario');
-        $this->load->library('table');
+        $this->load->library(array('table', 'b_rh'));
         $data['titulo_pagina'] = 'Inicio';
         $data['titulo_tabla'] = 'Listado de RH';
         // ------------------------------------------------------------ //
-        $listado = $this->m_recibo_honorario->lista_por_empresa($this->items['session']['sys_id']);
+        // $listado = $this->m_recibo_honorario->listar_por_empresa($this->items['session']['sys_id']);
+        $listado = $this->b_rh->listar_por_empresa($this->items['session']['sys_id']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
         $this->table->set_heading('F. Emision', 'F. Pago', 'Empleado', 'Monto');

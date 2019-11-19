@@ -44,6 +44,7 @@ class Login extends CI_Controller {
         $sesion['sys_id'] = $usuario['id'];
         $sesion['sys_usuario'] = $usuario['usuario'];
         $sesion['sys_email'] = $usuario['email'];
+        $sesion['sys_documento'] = $usuario['documento'];
         $sesion['sys_imagen'] = $usuario['imagen'];
         $sesion['sys_rol_id'] = $usuario['rol_id'];
         $sesion['sys_rol'] = $rol['nombre'];

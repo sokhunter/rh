@@ -9,21 +9,18 @@
 					<form class="sendForm" action="{$get_url}empresa/guardar" method="post">
 						<div class="response"></div>
 						<div class="form-group row">
-							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
-							<div class="col-6">
-								<input type="text" name="razon_social" class="form-control" id="razon_social" placeholder="Razón Social" value="{if isset($registro)}{$registro.razon_social}{/if}">
-							</div>
-						</div>
-						<div class="form-group row">
 							<label for="documento" class="col-4 col-form-label">RUC</label>
 							<div class="col-4">
-								<input type="text" name="ruc" class="form-control" id="documento" placeholder="RUC" value="{if isset($registro)}{$registro.documento}{/if}">
+								<input type="text" name="documento" class="form-control" id="documento" placeholder="RUC"  value="{if isset($registro)}{$registro.documento}{/if}">
 							</div>
+							<!-- <div class="col-2">
+								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="2">Validar</a>
+							</div> -->
 						</div>
 						<div class="form-group row">
-							<label for="imagen" class="col-4 col-form-label">Nombre</label>
-							<div class="col-5">
-								<input type="file" name="imagen" class="form-control" id="imagen" placeholder="Nombre" value="{if isset($registro)}{$registro.imagen}{/if}">
+							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
+							<div class="col-6">
+								<input type="text" name="razon_social" class="form-control validacion_doc" id="razon_social" placeholder="Razón Social" value="{if isset($registro)}{$registro.razon_social}{/if}">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -35,7 +32,7 @@
 						<div class="form-group row">
 							<label for="direccion" class="col-4 col-form-label">Dirección</label>
 							<div class="col-8">
-								<input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" value="{if isset($registro)}{$registro.direccion}{/if}">
+								<input type="text" name="direccion" class="form-control validacion_doc" id="direccion" placeholder="Dirección" value="{if isset($registro)}{$registro.direccion}{/if}">
 							</div>
 						</div>
 						<input type="hidden" name="id" value="{if isset($registro)}{$registro.id}{/if}">

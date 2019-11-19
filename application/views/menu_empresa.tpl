@@ -2,12 +2,15 @@
 	<li class="nav-item {if $active == 'rh'}active{/if}">
 		<a class="nav-link" href="{$base_url}empresa/home">RH <span class="sr-only">(current)</span></a>
 	</li>
+	<li class="nav-item {if $active == 'cartera'}active{/if}">
+		<a class="nav-link" href="{$base_url}empresa/cartera/listar">Cartera <span class="sr-only">(current)</span></a>
+	</li>
 	<li class="nav-item {if $active == 'empleado'}active{/if}">
 		<a class="nav-link" href="{$base_url}empresa/empleado/listar">Empleados <span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="#" data-toggle="modal" data-target="#tasa_descuento">
-			Tasa de descuento 
+			TEA 
 			<span class="sr-only">(current)</span>
 		</a>
 	</li>

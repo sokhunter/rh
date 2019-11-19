@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-12 04:11:58
+<?php /* Smarty version 3.1.27, created on 2019-11-19 21:53:20
          compiled from "C:\wamp\www\rh\application\views\empleado_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:183455dca310e6e3e57_81060678%%*/
+/*%%SmartyHeaderCode:209805dd46450678f68_76976763%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f995f99685e4e853bfb450a5037febd4299d4bd2' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empleado_agregar.tpl',
-      1 => 1573531917,
+      1 => 1574200395,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '183455dca310e6e3e57_81060678',
+  'nocache_hash' => '209805dd46450678f68_76976763',
   'variables' => 
   array (
     'get_url' => 0,
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dca310e87bb27_19744153',
+  'unifunc' => 'content_5dd4645079bb45_39168750',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dca310e87bb27_19744153')) {
-function content_5dca310e87bb27_19744153 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd4645079bb45_39168750')) {
+function content_5dd4645079bb45_39168750 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '183455dca310e6e3e57_81060678';
+$_smarty_tpl->properties['nocache_hash'] = '209805dd46450678f68_76976763';
 ?>
 <div class="container">
 	<p class="h2">
@@ -45,20 +45,20 @@ $_smarty_tpl->properties['nocache_hash'] = '183455dca310e6e3e57_81060678';
 empleado/guardar" method="post">
 						<div class="response"></div>
 						<div class="form-group row">
-							<label for="documento" class="col-4 col-form-label">DNI</label>
+							<label for="documento" class="col-4 col-form-label">N° Documento</label>
 							<div class="col-4">
-								<input type="text" name="dni" class="form-control" id="documento" placeholder="DNI"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="dni" class="form-control" id="documento" placeholder="N° Documento"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 }?>">
 							</div>
 							<div class="col-2">
-								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm">Validar</a>
+								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="3">Validar</a>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="nombre" class="col-4 col-form-label">Nombre</label>
 							<div class="col-6">
-								<input <?php if (!isset($_smarty_tpl->tpl_vars['registro']->value)) {?>disabled=""<?php }?> type="text" name="nombre" class="form-control validacion_doc" id="nombre" placeholder="Nombre"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="nombre" class="form-control validacion_doc" id="nombre" placeholder="Nombre"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['nombre'];
 }?>">
 							</div>
@@ -66,7 +66,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['nombre'];
 						<div class="form-group row">
 							<label for="a_paterno" class="col-4 col-form-label">Apellido paterno</label>
 							<div class="col-5">
-								<input disabled="" type="text" name="a_paterno" class="form-control validacion_doc" id="a_paterno" placeholder="Apellido paterno"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="a_paterno" class="form-control validacion_doc" id="a_paterno" placeholder="Apellido paterno"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['a_paterno'];
 }?>">
 							</div>
@@ -74,7 +74,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['a_paterno'];
 						<div class="form-group row">
 							<label for="a_materno" class="col-4 col-form-label">Apellido materno</label>
 							<div class="col-5">
-								<input disabled="" type="text" name="a_materno" class="form-control validacion_doc" id="a_materno" placeholder="Apellido materno"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="a_materno" class="form-control validacion_doc" id="a_materno" placeholder="Apellido materno"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['a_materno'];
 }?>">
 							</div>
@@ -82,7 +82,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['a_materno'];
 						<div class="form-group row">
 							<label for="email" class="col-4 col-form-label">Correo</label>
 							<div class="col-5">
-								<input disabled="" type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['email'];
 }?>">
 							</div>
