@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 15:58:12
+<?php /* Smarty version 3.1.27, created on 2019-11-21 16:37:17
          compiled from "C:\wamp\www\rh\application\views\login.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:272295dd6b414c93641_02654906%%*/
+/*%%SmartyHeaderCode:246345dd6bd3d6e48d1_20706001%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4ce990d31652600ea92be95c078ef4f2a3fb61bd' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\login.tpl',
-      1 => 1574351891,
+      1 => 1574354205,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '272295dd6b414c93641_02654906',
+  'nocache_hash' => '246345dd6bd3d6e48d1_20706001',
   'variables' => 
   array (
     'titulo_pagina' => 0,
@@ -21,13 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd6b414d0ddd5_25707310',
+  'unifunc' => 'content_5dd6bd3f920eb4_21072488',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd6b414d0ddd5_25707310')) {
-function content_5dd6b414d0ddd5_25707310 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6bd3f920eb4_21072488')) {
+function content_5dd6bd3f920eb4_21072488 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '272295dd6b414c93641_02654906';
+$_smarty_tpl->properties['nocache_hash'] = '246345dd6bd3d6e48d1_20706001';
 ?>
 <!DOCTYPE html>
 <html class="html-full">
@@ -84,7 +84,7 @@ public/css/login.css">
 				</div>
 				<form class="sendForm" action="login/ingresar" method="post">
 					<div class="response"></div>
-					<input type="text" id="email" class="fadeIn second" name="email" placeholder="Usuario">
+					<input type="text" id="email" class="fadeIn second documento" name="email" placeholder="Usuario">
 					<input type="password" id="clave" class="fadeIn third" name="clave" placeholder="Clave">
 					<input type="submit" class="save fadeIn fourth" value="Ingresar">
 				</form>
@@ -113,6 +113,20 @@ public/plugins/bootstrap-4.3.1/js/bootstrap.min.js"><?php echo '</script'; ?>
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 public/js/process.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+public/js/numeric.js"><?php echo '</script'; ?>
+>
+
+        <?php echo '<script'; ?>
+ type="text/javascript">
+            
+            $(".documento").numeric({ 
+                negative: false,
+                decimal: false
+            });
+        <?php echo '</script'; ?>
 >
     </body>
 </html><?php }

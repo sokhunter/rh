@@ -45,7 +45,7 @@
 				</div>
 				<form class="sendForm" action="login/ingresar" method="post">
 					<div class="response"></div>
-					<input type="text" id="email" class="fadeIn second" name="email" placeholder="Usuario">
+					<input type="text" id="email" class="fadeIn second documento" name="email" placeholder="Usuario">
 					<input type="password" id="clave" class="fadeIn third" name="clave" placeholder="Clave">
 					<input type="submit" class="save fadeIn fourth" value="Ingresar">
 				</form>
@@ -63,5 +63,14 @@
         <script type="text/javascript" src="{$base_url}public/plugins/bootstrap-4.3.1/js/bootstrap.min.js"></script>
         {* SCRIPT GENERAL *}
         <script type="text/javascript" src="{$base_url}public/js/process.js"></script>
+        <script type="text/javascript" src="{$base_url}public/js/numeric.js"></script>
+
+        <script type="text/javascript">
+            
+            $(".documento").numeric({ 
+                negative: false,
+                decimal: false
+            });
+        </script>
     </body>
 </html>
