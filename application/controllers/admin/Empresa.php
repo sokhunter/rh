@@ -75,6 +75,23 @@ class Empresa extends CI_Controller {
         $this->load->library(array('b_empresa'));
         $id = $this->input->post('id');
         $response = "No se pudo procesar la acción";
+
+        // VALIDACIONES
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('documento', 'RUC', 'required|exact_length[11]');
+        $this->form_validation->set_rules('razon_social', 'Razón Social', 'required');
+        $this->form_validation->set_rules('email', 'Correo', 'required|valid_email');
+        $this->form_validation->set_rules('direccion', 'Dirección', 'required');
+
+        $this->form_validation->set_message('required','El campo {field} es obligatorio');
+        $this->form_validation->set_message('exact_length','El campo {field} debe tener exactamente {param} digitos');
+        $this->form_validation->set_message('valid_email','El campo {field} debe contener una dirección de correo válida');
+
+        if(!$this->form_validation->run()){
+            echo mensaje_error(validation_errors('<li>', '</li>'));
+            EXIT;
+        }
+
         if($id == ""){
             $response = $this->b_empresa->agregar();
         }else{
