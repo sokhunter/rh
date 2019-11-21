@@ -25,16 +25,16 @@ class Empresa extends CI_Controller {
     public function listar()
     {
         $this->load->model('m_empresa');
-        $this->load->library('table');
+        $this->load->library(array('table', 'b_empresa'));
         $data['titulo_pagina'] = 'Inicio';
         $data['titulo_tabla'] = 'Listado de empresas';
         $data['btn_agregar'] = base_url() . 'admin/empresa/agregar';
         // ------------------------------------------------------------ //
         // $listado = $this->m_empresa->mostrar_todo('razon_social, documento, email, direccion');
-        $listado = $this->m_empresa->listar('razon_social, documento, email, direccion');
+        $listado = $this->b_empresa->listar($this->items['get_url']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
-        $this->table->set_heading('Empresa', 'RUC', 'Correo', 'Dirección');
+        $this->table->set_heading('Empresa', 'RUC', 'Correo', 'Dirección', 'Opciones');
         $data['tabla'] = $this->table->generate($listado);
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
@@ -81,10 +81,15 @@ class Empresa extends CI_Controller {
             $response = $this->b_empresa->editar();
         }
         $response = json_decode($response);
-        echo mensaje_error($response->msg);
         
-        if($response->status != 400){
-            echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empresa/listar');
+        switch ($response->status) {
+            case 200:
+                echo mensaje_exito($response->msg);
+                echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empresa/listar');
+                break;
+            default:
+                echo mensaje_error($response->msg);
+                break;
         }
     }
 

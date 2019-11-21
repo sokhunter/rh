@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 12:18:55
+<?php /* Smarty version 3.1.27, created on 2019-11-21 14:37:08
          compiled from "C:\wamp\www\rh\application\views\empresa_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:325405dd680af49fda0_10133195%%*/
+/*%%SmartyHeaderCode:285525dd6a11491a720_35110163%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,26 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '230f90ddd94261d31279f43bfe407daab897a0e0' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empresa_agregar.tpl',
-      1 => 1574338733,
+      1 => 1574346856,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '325405dd680af49fda0_10133195',
+  'nocache_hash' => '285525dd6a11491a720_35110163',
   'variables' => 
   array (
     'get_url' => 0,
     'registro' => 0,
-    'base_url' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd680b0204ad8_38529544',
+  'unifunc' => 'content_5dd6a1149c6741_84399752',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd680b0204ad8_38529544')) {
-function content_5dd680b0204ad8_38529544 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6a1149c6741_84399752')) {
+function content_5dd6a1149c6741_84399752 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '325405dd680af49fda0_10133195';
+$_smarty_tpl->properties['nocache_hash'] = '285525dd6a11491a720_35110163';
 ?>
 <div class="container">
 	<p class="h2">
@@ -85,14 +84,6 @@ echo $_smarty_tpl->tpl_vars['registro']->value['id'];
 				<div class="col-3">
 					<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {?>
 					<div class="card">
-						<?php if (empty($_smarty_tpl->tpl_vars['registro']->value['imagen'])) {?>
-						<img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/imagen/usuario/empty.png" alt="empleado">
-						<?php } else { ?>
-						<img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/imagen/usuario/<?php echo $_smarty_tpl->tpl_vars['registro']->value['imagen'];?>
-" alt="empleado">
-						<?php }?>
 						<div class="card-body">
 							<h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['registro']->value['razon_social'];?>
 </h5>

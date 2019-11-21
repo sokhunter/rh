@@ -7,7 +7,7 @@ class Empleado extends CI_Controller {
 
         parent::__construct();
         $library = array('smarty_tpl', 'session');
-        $helper = array('url');
+        $helper = array('url', 'alerta');
         $this->load->library($library);
         $this->load->helper($helper);
 		// Datos de la sesion
@@ -25,15 +25,16 @@ class Empleado extends CI_Controller {
     public function listar()
     {
         $this->load->model('m_empleado');
-        $this->load->library('table');
+        $this->load->library(array('table', 'b_empleado'));
         $data['titulo_pagina'] = 'Inicio';
         $data['titulo_tabla'] = 'Listado de empleados';
         $data['btn_agregar'] = base_url() . 'admin/empleado/agregar';
         // ------------------------------------------------------------ //
-        $listado = $this->m_empleado->listar("CONCAT(t.nombre, ' ', t.a_paterno, ' ', t.a_materno), u.documento, u.email");
+        // $listado = $this->m_empleado->listar("CONCAT(t.nombre, ' ', t.a_paterno, ' ', t.a_materno), u.documento, u.email");
+        $listado = $this->b_empleado->listar($this->items['get_url']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
-        $this->table->set_heading('Nombre', 'Documento', 'Correo');
+        $this->table->set_heading('Nombre', 'Documento', 'Correo', 'Opciones');
         $data['tabla'] = $this->table->generate($listado);
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
@@ -74,15 +75,40 @@ class Empleado extends CI_Controller {
         $this->load->library('b_empleado');
         $id = $this->input->post('id');
         $response = "No se pudo procesar la acción";
+
+        // VALIDACIONES
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('dni', 'N° Documento', 'required|exact_length[8]');
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('a_paterno', 'Apellido paterno', 'required');
+        $this->form_validation->set_rules('a_materno', 'Apellido materno', 'required');
+        $this->form_validation->set_rules('email', 'Correo', 'required|valid_email');
+
+        $this->form_validation->set_message('required','El campo {field} es obligatorio');
+        $this->form_validation->set_message('exact_length','El campo {field} debe tener exactamente {param} digitos');
+        $this->form_validation->set_message('valid_email','El campo {field} debe contener una dirección de correo válida');
+
+        if(!$this->form_validation->run()){
+            echo mensaje_error(validation_errors('<li>', '</li>'));
+            EXIT;
+        }
+        // FIN VALIDACIONES
+
         if($id == ""){
             $response = $this->b_empleado->agregar();
         }else{
             $response = $this->b_empleado->editar();
         }
         $response = json_decode($response);
-        echo $response->msg;
-        if($response->status != 400){
-            echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+
+        switch ($response->status) {
+            case 200:
+                echo mensaje_exito($response->msg);
+                echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+                break;
+            default:
+                echo mensaje_error($response->msg);
+                break;
         }
     }
 

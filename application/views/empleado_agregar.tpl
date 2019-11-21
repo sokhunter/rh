@@ -46,7 +46,7 @@
 							<label for="cargo" class="col-4 col-form-label">Cargo</label>
 							<div class="col-5">
 								<select name="cargo" class="form-control" id="cargo">
-									<option>Seleccione un cargo</option>
+									<option value="">Seleccione un cargo</option>
 									{foreach $cargos as $c}
 									<option value="{$c.id}">{$c.nombre}</option>
 									{/foreach}
@@ -62,11 +62,6 @@
 				<div class="col-3">
 					{if isset($registro)}
 					<div class="card">
-						{if empty($registro.imagen)}
-						<img class="card-img-top" src="{$base_url}public/imagen/usuario/empty.png" alt="empleado">
-						{else}
-						<img class="card-img-top" src="{$base_url}public/imagen/usuario/{$registro.imagen}" alt="empleado">
-						{/if}
 						<div class="card-body">
 							<h5 class="card-title">{$registro.nombre} {$registro.a_paterno} {$registro.a_materno}</h5>
 						</div>

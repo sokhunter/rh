@@ -7,7 +7,7 @@ class Empleado extends CI_Controller {
 
         parent::__construct();
         $library = array('smarty_tpl', 'session');
-        $helper = array('url');
+        $helper = array('url', 'alerta');
         $this->load->library($library);
         $this->load->helper($helper);
 		// Datos de la sesion
@@ -49,7 +49,6 @@ class Empleado extends CI_Controller {
         $data['titulo_pagina'] = 'Agregar empleado';
         // ------------------------------------------------------------ //
         $data['session_id'] = $this->session->userdata('sys_id');
-        // $data['cargos'] = $this->m_cargo->mostrar_todo();
         $data['cargos'] = $this->m_cargo->listar();
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
@@ -79,12 +78,34 @@ class Empleado extends CI_Controller {
         $this->load->library(array('b_empleado', 'b_empresa'));
         $response = "No se pudo procesar la acción";
         $dni = $this->input->post('dni');
+
+        // VALIDACIONES
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('dni', 'N° Documento', 'required|exact_length[8]');
+        $this->form_validation->set_rules('a_paterno', 'Apellido paterno', 'required');
+        $this->form_validation->set_rules('a_materno', 'Apellido materno', 'required');
+        $this->form_validation->set_rules('email', 'Correo', 'required|valid_email');
+        $this->form_validation->set_rules('cargo', 'Cargo', 'required');
+
+        $this->form_validation->set_message('required','El campo {field} es obligatorio');
+        $this->form_validation->set_message('exact_length','El campo {field} debe tener exactamente {param} digitos');
+        $this->form_validation->set_message('valid_email','El campo {field} debe contener una dirección de correo válida');
+
+        if(!$this->form_validation->run()){
+            echo mensaje_error(validation_errors('<li>', '</li>'));
+            EXIT;
+        }
+        // FIN VALIDACIONES
+
         if(!$this->m_usuario->existe_campo('documento', $dni)){
             $this->b_empleado->agregar();
         }
-        $response = $this->b_empresa->agregar_empleado();
-        echo $response;
-        echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+        $response = json_decode($this->b_empresa->agregar_empleado());
+        echo mensaje_exito($response->msg);
+        if($response->status != 400){
+            echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empleado/listar');
+        }
     }
 
 }

@@ -14,6 +14,18 @@ class B_empresa {
 		$this->CI->items['session'] = $this->CI->session->userdata();
     }
 
+    function listar($url){
+        $this->CI->load->model('m_empresa');
+        $lista = $this->CI->m_empresa->listar("t.id, razon_social, documento, email, direccion");
+        $i = 0;
+        foreach ($lista as $l) {
+            $lista[$i]['btn'] = '<a href="' . $url . 'empresa/editar/' . $l['id'] . '" class="btn btn-sm btn-info">Editar</a>';
+            unset($lista[$i]['id']);
+            $i++;
+        }
+        return $lista;
+    }
+
     function listar_por_empleado($empleado_id = "", $url = ""){
         $listado = $this->CI->m_empresa->listar_por_empleado($empleado_id);
         $i = 0;
@@ -85,12 +97,16 @@ class B_empresa {
         $this->CI->load->model(array('m_usuario', 'm_empresa'));
         $id = $this->CI->input->post('id');
         $razon_social = $this->CI->input->post('razon_social');
-        $ruc = $this->CI->input->post('ruc');
+        $ruc = $this->CI->input->post('documento');
         $imagen = $this->CI->input->post('imagen');
         $email = $this->CI->input->post('email');
         $direccion = $this->CI->input->post('direccion');
 
-        //validar ruc duplicado
+        if($this->CI->m_usuario->existe_campo('documento', $ruc, $id)){
+            $response['msg'] = "El RUC ingresado ya se encuentra registrado";
+            $response['status'] = 400;
+            return json_encode($response);
+        }
 
         $d_usuario['email'] = $email;
         $d_usuario['documento'] = $ruc;
@@ -101,9 +117,13 @@ class B_empresa {
         $result = $this->CI->m_empresa->editar($d_empresa, $id);
 
         if($result !== FALSE) {
-            return "Edición exitosa";
+            $response['msg'] = "Edición exitosa";
+            $response['status'] = 200;
+            return json_encode($response);
         }else{
-            return "Ha ocurrido un error";
+            $response['msg'] = "Ha ocurrido un error";
+            $response['status'] = 500;
+            return json_encode($response);
         }
     }
 
@@ -119,9 +139,13 @@ class B_empresa {
     	$result = $this->CI->m_empresa_empleado->agregar($d_ee);
 
         if($result !== FALSE) {
-            return "Registro exitoso";
+            $response['msg'] = "Registro exitoso";
+            $response['status'] = 200;
+            return json_encode($response);
         }else{
-            return "Ha ocurrido un error";
+            $response['msg'] = "Ha ocurrido un error";
+            $response['status'] = 500;
+            return json_encode($response);
         }
     }
 

@@ -13,6 +13,18 @@ class B_empleado {
 		}
 		$this->CI->items['session'] = $this->CI->session->userdata();
     }
+
+    function listar($url){
+        $this->CI->load->model('m_empleado');
+        $lista = $this->CI->m_empleado->listar("t.id, CONCAT(t.nombre, ' ', t.a_paterno, ' ', t.a_materno), u.documento, u.email");
+        $i = 0;
+        foreach ($lista as $l) {
+            $lista[$i]['btn'] = '<a href="' . $url . 'empleado/editar/' . $l['id'] . '" class="btn btn-sm btn-info">Editar</a>';
+            unset($lista[$i]['id']);
+            $i++;
+        }
+        return $lista;
+    }
     
 	function agregar(){
         $this->CI->load->model(array('m_usuario', 'm_empleado'));
@@ -20,8 +32,8 @@ class B_empleado {
         $a_paterno = $this->CI->input->post('a_paterno');
         $a_materno = $this->CI->input->post('a_materno');
         $dni = $this->CI->input->post('dni');
+        $cargo = $this->CI->input->post('cargo');
         $email = $this->CI->input->post('email');
-        // VALIDACIONES
 
         if($this->CI->m_usuario->existe_campo('documento', $dni)){
             $response['msg'] = "El DNI ingresado ya se encuentra registrado";
@@ -72,9 +84,13 @@ class B_empleado {
         $result = $this->CI->m_empleado->editar($d_empleado, $id);
 
         if($result !== FALSE) {
-            return "Edición exitosa";
+            $response['msg'] = "Registro exitoso";
+            $response['status'] = 200;
+            return json_encode($response);
         }else{
-            return "Ha ocurrido un error";
+            $response['msg'] = "Ha ocurrido un error";
+            $response['status'] = 500;
+            return json_encode($response);
         }
     }
 

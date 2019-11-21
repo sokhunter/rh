@@ -31,12 +31,10 @@ class Tasa_descontada {
         $desc = round($vNominal * $dp, 2);
         $vNeto = $vNominal - $desc;
 
-        
-
         $vRecibido = $vNeto - $retencion - $cIniciales;
         $vEntregado = $vNominal - $retencion + $cFinales;
         // $vEntregado = $cFinales;
-        $tcea = $vEntregado == 0 ? 0 : round(pow($vEntregado / $vRecibido, 360 / $dias) - 1, 7);
+        $tcea = $vEntregado == 0 ? 0 : round((pow($vEntregado / $vRecibido, 360 / $dias) - 1)*100, 7);
         // echo 'dias ' . $dias . '<br>';
         // echo 'CI ' . $cIniciales . ' CF ' . $cFinales . ' Neto: ' . $vNeto . ' retencion' . $retencion . '<br>';
         // echo  'entregado ' . $vEntregado . ' recibido'. $vRecibido . '<br>'; 

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 12:20:28
+<?php /* Smarty version 3.1.27, created on 2019-11-21 14:34:06
          compiled from "C:\wamp\www\rh\application\views\empleado_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:5445dd6810c02a6a8_47048469%%*/
+/*%%SmartyHeaderCode:269815dd6a05e16e0d4_51478990%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f995f99685e4e853bfb450a5037febd4299d4bd2' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empleado_agregar.tpl',
-      1 => 1574338826,
+      1 => 1574346844,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5445dd6810c02a6a8_47048469',
+  'nocache_hash' => '269815dd6a05e16e0d4_51478990',
   'variables' => 
   array (
     'get_url' => 0,
@@ -21,17 +21,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'session_id' => 0,
     'cargos' => 0,
     'c' => 0,
-    'base_url' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd6810c26edc2_57244628',
+  'unifunc' => 'content_5dd6a05e27ae51_11160374',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd6810c26edc2_57244628')) {
-function content_5dd6810c26edc2_57244628 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6a05e27ae51_11160374')) {
+function content_5dd6a05e27ae51_11160374 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '5445dd6810c02a6a8_47048469';
+$_smarty_tpl->properties['nocache_hash'] = '269815dd6a05e16e0d4_51478990';
 ?>
 <div class="container">
 	<p class="h2">
@@ -92,7 +91,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['email'];
 							<label for="cargo" class="col-4 col-form-label">Cargo</label>
 							<div class="col-5">
 								<select name="cargo" class="form-control" id="cargo">
-									<option>Seleccione un cargo</option>
+									<option value="">Seleccione un cargo</option>
 									<?php
 $_from = $_smarty_tpl->tpl_vars['cargos']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -127,14 +126,6 @@ echo $_smarty_tpl->tpl_vars['registro']->value['id'];
 				<div class="col-3">
 					<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {?>
 					<div class="card">
-						<?php if (empty($_smarty_tpl->tpl_vars['registro']->value['imagen'])) {?>
-						<img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/imagen/usuario/empty.png" alt="empleado">
-						<?php } else { ?>
-						<img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/imagen/usuario/<?php echo $_smarty_tpl->tpl_vars['registro']->value['imagen'];?>
-" alt="empleado">
-						<?php }?>
 						<div class="card-body">
 							<h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['registro']->value['nombre'];?>
  <?php echo $_smarty_tpl->tpl_vars['registro']->value['a_paterno'];?>

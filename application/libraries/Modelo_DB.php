@@ -124,12 +124,12 @@ class Modelo_DB {
         } else {
             $this->get_query();
             $this->get_where('t.id', $id);
-            $this->limit(1);
+            // $this->limit(1);
             $stm = $this->CI->db->get()->row_array();
             $this->get_query();
             $this->get_where('t.' . $campo . '!=', $stm[$campo]);
             $this->get_where('t.' . $campo, $valor);
-            $this->limit(1);
+            // $this->limit(1);
             $resultSet = $this->CI->db->get()->row_array();
         }
         if (count($resultSet) > 0) {
