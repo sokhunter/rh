@@ -7,7 +7,7 @@ class Empresa extends CI_Controller {
 
         parent::__construct();
         $library = array('smarty_tpl', 'session');
-        $helper = array('url');
+        $helper = array('url', 'alerta');
         $this->load->library($library);
         $this->load->helper($helper);
 		// Datos de la sesion
@@ -81,7 +81,8 @@ class Empresa extends CI_Controller {
             $response = $this->b_empresa->editar();
         }
         $response = json_decode($response);
-        echo $response->msg;
+        echo mensaje_error($response->msg);
+        
         if($response->status != 400){
             echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'empresa/listar');
         }

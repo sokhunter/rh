@@ -17,7 +17,7 @@ class Home extends CI_Controller {
         }
 		$this->items['session'] = $this->session->userdata();
         $this->items['base_url'] = base_url();
-        $this->items['get_url'] = base_url() . 'empresa';
+        $this->items['get_url'] = base_url() . 'empresa/';
         $this->items['active'] = 'rh';
         $this->items['menu'] = $this->smarty_tpl->view('menu_empresa', $this->items, TRUE);
     }

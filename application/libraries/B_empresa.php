@@ -32,8 +32,24 @@ class B_empresa {
         $imagen = $this->CI->input->post('imagen');
         $email = $this->CI->input->post('email');
         $direccion = $this->CI->input->post('direccion');
+
         // VALIDACIONES
-        
+        $this->CI->load->library('form_validation');
+        $this->CI->form_validation->set_rules('documento', 'RUC', 'required|exact_length[11]');
+        $this->CI->form_validation->set_rules('razon_social', 'Razón Social', 'required');
+        $this->CI->form_validation->set_rules('email', 'Correo', 'required|valid_email');
+        $this->CI->form_validation->set_rules('direccion', 'Dirección', 'required');
+
+        $this->CI->form_validation->set_message('required','El campo {field} es obligatorio');
+        $this->CI->form_validation->set_message('exact_length','El campo {field} debe tener exactamente {param} digitos');
+        $this->CI->form_validation->set_message('valid_email','El campo {field} debe contener una dirección de correo válida');
+
+        if(!$this->CI->form_validation->run()){
+            $response['msg'] = validation_errors('<li>', '</li>');
+            $response['status'] = 400;
+            return json_encode($response);
+        }
+
         if($this->CI->m_usuario->existe_campo('documento', $ruc)){
             $response['msg'] = "El RUC ingresado ya se encuentra registrado";
             $response['status'] = 400;

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-19 21:53:20
+<?php /* Smarty version 3.1.27, created on 2019-11-21 12:20:28
          compiled from "C:\wamp\www\rh\application\views\empleado_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:209805dd46450678f68_76976763%%*/
+/*%%SmartyHeaderCode:5445dd6810c02a6a8_47048469%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f995f99685e4e853bfb450a5037febd4299d4bd2' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empleado_agregar.tpl',
-      1 => 1574200395,
+      1 => 1574338826,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '209805dd46450678f68_76976763',
+  'nocache_hash' => '5445dd6810c02a6a8_47048469',
   'variables' => 
   array (
     'get_url' => 0,
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd4645079bb45_39168750',
+  'unifunc' => 'content_5dd6810c26edc2_57244628',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd4645079bb45_39168750')) {
-function content_5dd4645079bb45_39168750 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6810c26edc2_57244628')) {
+function content_5dd6810c26edc2_57244628 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '209805dd46450678f68_76976763';
+$_smarty_tpl->properties['nocache_hash'] = '5445dd6810c02a6a8_47048469';
 ?>
 <div class="container">
 	<p class="h2">
@@ -47,7 +47,7 @@ empleado/guardar" method="post">
 						<div class="form-group row">
 							<label for="documento" class="col-4 col-form-label">N° Documento</label>
 							<div class="col-4">
-								<input type="text" name="dni" class="form-control" id="documento" placeholder="N° Documento"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+								<input type="text" name="dni" class="form-control documento" id="documento" placeholder="N° Documento"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 }?>">
 							</div>

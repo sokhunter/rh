@@ -12,7 +12,7 @@
 							<div class="form-group row">
 								<label for="documento" class="col-4 col-form-label">RUC</label>
 								<div class="col-2">
-									<input type="text" name="documento" class="form-control" id="documento" placeholder="RUC"  value="{if isset($registro)}{$registro.documento}{elseif isset($empresa)}{$empresa.documento}{/if}">
+									<input type="text" name="documento" class="form-control required" id="documento" placeholder="RUC"  value="{if isset($registro)}{$registro.documento}{elseif isset($empresa)}{$empresa.documento}{/if}">
 								</div>
 								<div class="col-2">
 									<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="2">Validar</a>
@@ -21,7 +21,7 @@
 							<div class="form-group row">
 								<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
 								<div class="col-6">
-									<input {if !isset($registro)}disabled=""{/if} type="text" name="razon_social" class="form-control validacion_doc" id="razon_social" placeholder="Razón Social"  value="{if isset($registro)}{$registro.razon_social}{$registro.documento}{elseif isset($empresa)}{$empresa.razon_social}{/if}">
+									<input {if !isset($registro)}disabled=""{/if} type="text" name="razon_social" class="form-control validacion_doc required" id="razon_social" placeholder="Razón Social"  value="{if isset($registro)}{$registro.razon_social}{$registro.documento}{elseif isset($empresa)}{$empresa.razon_social}{/if}">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -33,25 +33,25 @@
 							<div class="form-group row">
 								<label for="f_emision" class="col-4 col-form-label">Fecha de emisión</label>
 								<div class="col-3">
-									<input type="date" name="f_emision" class="form-control" id="f_emision" placeholder="Fecha de emisión"  value="{if isset($registro)}{$registro.f_emision}{/if}">
+									<input type="date" min="{'-2'|fecha}" max="{'+0'|fecha}" name="f_emision" class="form-control required" id="f_emision" placeholder="Fecha de emisión"  value="{if isset($registro)}{$registro.f_emision}{/if}">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="f_pago" class="col-4 col-form-label">Fecha de pago</label>
 								<div class="col-3">
-									<input type="date" name="f_pago" class="form-control" id="f_pago" placeholder="Fecha de pago"  value="{if isset($registro)}{$registro.f_pago}{/if}">
+									<input type="date" min="{'+0'|fecha}" name="f_pago" class="form-control required" id="f_pago" placeholder="Fecha de pago"  value="{if isset($registro)}{$registro.f_pago}{/if}">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="f_adelanto" class="col-4 col-form-label">Fecha de adelanto</label>
 								<div class="col-3">
-									<input type="date" name="f_adelanto" class="form-control" id="f_adelanto" placeholder="Fecha de adelanto"  value="{if isset($registro)}{$registro.f_adelanto}{/if}">
+									<input type="date" min="{'+0'|fecha}" name="f_adelanto" class="form-control" id="f_adelanto" placeholder="Fecha de adelanto"  value="{if isset($registro)}{$registro.f_adelanto}{/if}">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="descripcion" class="col-4 col-form-label">Descripción</label>
 								<div class="col-8">
-									<textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripción"  value="{if isset($registro)}{$registro.descripcion}{/if}"></textarea> 
+									<textarea name="descripcion" class="form-control required" id="descripcion" placeholder="Descripción" value="{if isset($registro)}{$registro.descripcion}{/if}"></textarea> 
 								</div>
 							</div>
 							<div class="form-group row">
@@ -88,7 +88,7 @@
 							<div class="form-group row">
 								<label for="total" class="col-4 col-form-label">Monto</label>
 								<div class="col-2">
-									<input type="number" min="0" step=".01" name="total" class="form-control moneda" id="total" placeholder="Monto"  value="{if isset($registro)}{$registro.total}{/if}">
+									<input type="number" min="0" step=".01" name="total" class="form-control moneda required" id="total" placeholder="Monto"  value="{if isset($registro)}{$registro.total}{/if}">
 								</div>
 							</div>
 							<input type="hidden" name="id" value="{if isset($registro)}{$registro.id}{/if}">

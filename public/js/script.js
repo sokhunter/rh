@@ -78,6 +78,11 @@ $(".moneda").numeric({
 	decimalPlaces: 2
 });
 
+$(".documento").numeric({ 
+	negative: false,
+	decimal: false
+});
+
 $("#nextBtn").on("click", function(){
 	let cuerpo = "";
 	cuerpo += "<p>";
@@ -99,14 +104,31 @@ $("#nextBtn").on("click", function(){
 	let retencion = 0;
 	let total = parseFloat($("#total").val()).toFixed(2);
 	let neto = total;
-	totales += "<p><b>" + total + "</b><b> " + $("#moneda").val() + "</b></p>";
+	totales += "<p><b>" + total + "</b><b> " + $("#moneda").text() + "</b></p>";
 	if($("#retencion").is(':checked')){
 		retencion = (total * 0.08).toFixed(2);
 		neto = (total - retencion).toFixed(2);
 	}
-	totales += "<p><b>(" + retencion + ")</b><b> " + $("#moneda").val() + "</b></p>";
-	totales += "<p><b>" + neto + "</b><b> " + $("#moneda").val() + "</b></p>";
+	totales += "<p><b>(" + retencion + ")</b><b> " + $("#moneda").text() + "</b></p>";
+	totales += "<p><b>" + neto + "</b><b> " + $("#moneda").text() + "</b></p>";
 	$(".rh_totales").html(totales);
 	$(".rh_fecha").html($("#f_emision").val());
 });
 
+$("#f_adelanto").change(function(){
+	if($("#f_pago").val() != ''){
+		if((new Date($("#f_adelanto").val()).getTime() > new Date($("#f_pago").val()).getTime())){
+            	alert("La fecha de adelanto no puede ser mayor a la fecha de pago");
+				$("#f_adelanto").val("");
+		}
+	}
+});
+
+$("#f_pago").change(function(){
+	if($("#f_adelanto").val() != ''){
+		if((new Date($("#f_adelanto").val()).getTime() > new Date($("#f_pago").val()).getTime())){
+            	alert("La fecha de pago no puede ser menor a la fecha de adelanto");
+				$("#f_pago").val("");
+		}
+	}
+});

@@ -7,7 +7,7 @@ class Rh extends CI_Controller {
 
         parent::__construct();
         $library = array('smarty_tpl', 'session');
-        $helper = array('url');
+        $helper = array('url', 'fecha');
         $this->load->library($library);
         $this->load->helper($helper);
 		// Datos de la sesion

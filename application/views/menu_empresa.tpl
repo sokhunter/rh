@@ -5,6 +5,9 @@
 	<li class="nav-item {if $active == 'cartera'}active{/if}">
 		<a class="nav-link" href="{$base_url}empresa/cartera/listar">Cartera <span class="sr-only">(current)</span></a>
 	</li>
+	<li class="nav-item {if $active == 'costos'}active{/if}">
+		<a class="nav-link" href="{$base_url}empresa/costos/listar">Costos <span class="sr-only">(current)</span></a>
+	</li>
 	<li class="nav-item {if $active == 'empleado'}active{/if}">
 		<a class="nav-link" href="{$base_url}empresa/empleado/listar">Empleados <span class="sr-only">(current)</span></a>
 	</li>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-19 20:42:36
+<?php /* Smarty version 3.1.27, created on 2019-11-21 10:00:55
          compiled from "C:\wamp\www\rh\application\views\rh_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:156015dd453bc8f1341_40123481%%*/
+/*%%SmartyHeaderCode:279105dd6605703d1a4_69992176%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5a77e8ba58c0c6620f45be653ec8a954c664b94' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\rh_agregar.tpl',
-      1 => 1574184054,
+      1 => 1574330444,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '156015dd453bc8f1341_40123481',
+  'nocache_hash' => '279105dd6605703d1a4_69992176',
   'variables' => 
   array (
     'get_url' => 0,
@@ -26,13 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd453bd0f6906_41860203',
+  'unifunc' => 'content_5dd66057246a38_06909044',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd453bd0f6906_41860203')) {
-function content_5dd453bd0f6906_41860203 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd66057246a38_06909044')) {
+function content_5dd66057246a38_06909044 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '156015dd453bc8f1341_40123481';
+$_smarty_tpl->properties['nocache_hash'] = '279105dd6605703d1a4_69992176';
 ?>
 <div class="container">
 	<p class="h2">
@@ -49,7 +49,7 @@ rh/guardar" method="post">
 							<div class="form-group row">
 								<label for="documento" class="col-4 col-form-label">RUC</label>
 								<div class="col-2">
-									<input type="text" name="documento" class="form-control" id="documento" placeholder="RUC"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input type="text" name="documento" class="form-control required" id="documento" placeholder="RUC"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 } elseif (isset($_smarty_tpl->tpl_vars['empresa']->value)) {
 echo $_smarty_tpl->tpl_vars['empresa']->value['documento'];
@@ -62,7 +62,7 @@ echo $_smarty_tpl->tpl_vars['empresa']->value['documento'];
 							<div class="form-group row">
 								<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
 								<div class="col-6">
-									<input <?php if (!isset($_smarty_tpl->tpl_vars['registro']->value)) {?>disabled=""<?php }?> type="text" name="razon_social" class="form-control validacion_doc" id="razon_social" placeholder="Razón Social"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input <?php if (!isset($_smarty_tpl->tpl_vars['registro']->value)) {?>disabled=""<?php }?> type="text" name="razon_social" class="form-control validacion_doc required" id="razon_social" placeholder="Razón Social"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['razon_social'];
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 } elseif (isset($_smarty_tpl->tpl_vars['empresa']->value)) {
@@ -84,7 +84,9 @@ echo $_smarty_tpl->tpl_vars['empresa']->value['direccion'];
 							<div class="form-group row">
 								<label for="f_emision" class="col-4 col-form-label">Fecha de emisión</label>
 								<div class="col-3">
-									<input type="date" name="f_emision" class="form-control" id="f_emision" placeholder="Fecha de emisión"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input type="date" min="<?php echo fecha('-2');?>
+" max="<?php echo fecha('+0');?>
+" name="f_emision" class="form-control required" id="f_emision" placeholder="Fecha de emisión"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['f_emision'];
 }?>">
 								</div>
@@ -92,7 +94,8 @@ echo $_smarty_tpl->tpl_vars['registro']->value['f_emision'];
 							<div class="form-group row">
 								<label for="f_pago" class="col-4 col-form-label">Fecha de pago</label>
 								<div class="col-3">
-									<input type="date" name="f_pago" class="form-control" id="f_pago" placeholder="Fecha de pago"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input type="date" min="<?php echo fecha('+0');?>
+" name="f_pago" class="form-control required" id="f_pago" placeholder="Fecha de pago"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['f_pago'];
 }?>">
 								</div>
@@ -100,7 +103,8 @@ echo $_smarty_tpl->tpl_vars['registro']->value['f_pago'];
 							<div class="form-group row">
 								<label for="f_adelanto" class="col-4 col-form-label">Fecha de adelanto</label>
 								<div class="col-3">
-									<input type="date" name="f_adelanto" class="form-control" id="f_adelanto" placeholder="Fecha de adelanto"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input type="date" min="<?php echo fecha('+0');?>
+" name="f_adelanto" class="form-control" id="f_adelanto" placeholder="Fecha de adelanto"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['f_adelanto'];
 }?>">
 								</div>
@@ -108,7 +112,7 @@ echo $_smarty_tpl->tpl_vars['registro']->value['f_adelanto'];
 							<div class="form-group row">
 								<label for="descripcion" class="col-4 col-form-label">Descripción</label>
 								<div class="col-8">
-									<textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripción"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<textarea name="descripcion" class="form-control required" id="descripcion" placeholder="Descripción" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['descripcion'];
 }?>"></textarea> 
 								</div>
@@ -164,7 +168,7 @@ $_smarty_tpl->tpl_vars['m'] = $foreach_m_Sav;
 							<div class="form-group row">
 								<label for="total" class="col-4 col-form-label">Monto</label>
 								<div class="col-2">
-									<input type="number" min="0" step=".01" name="total" class="form-control moneda" id="total" placeholder="Monto"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
+									<input type="number" min="0" step=".01" name="total" class="form-control moneda required" id="total" placeholder="Monto"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['total'];
 }?>">
 								</div>

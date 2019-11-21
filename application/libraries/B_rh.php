@@ -50,6 +50,8 @@ class B_rh {
 
 	function agregar(){
         $this->CI->load->model(array('m_recibo_honorario', 'm_usuario', 'm_tasa_descuento', 'm_costo'));
+        $this->CI->load->library('tasa_descontada');
+        
         $documento = $this->CI->input->post('documento');
         $razon_social = $this->CI->input->post('razon_social');
         $direccion = $this->CI->input->post('direccion');
@@ -69,39 +71,31 @@ class B_rh {
         $d_rh['empresa_id'] = $empresa['id'];
         $d_rh['f_emision'] = $f_emision;
         $d_rh['f_pago'] = $f_pago;
-        $d_rh['f_adelanto'] = $f_adelanto;
         $d_rh['observacion'] = $observacion;
         $d_rh['descripcion'] = $descripcion;
         $d_rh['tipo_renta'] = $tipo_renta;
         $d_rh['retencion'] = 0;
         $d_rh['moneda_id'] = $moneda;
         $d_rh['total'] = $total;
+        $d_rh['costos_iniciales'] = 0;
+        $d_rh['costos_finales'] = 0;
+        $d_rh['neto'] = 0;
         if($retencion == 'on'){
-            $d_rh['retencion'] = $total * 0.08;
+            $d_rh['retencion'] = round($total * 0.08, 2);
+            $d_rh['neto'] = round($total - $total * 0.08, 2);
         }
 
         // PAGO ADELANTADO
-        $monto = $total - $d_rh['retencion'];
-        $tasa = $this->CI->m_tasa_descuento->mostrar('t.empresa_id', $empresa['id']);
-        $tea = $tasa['valor'];
-        $dias = floor(abs((strtotime($f_pago)  - strtotime($f_adelanto)) / 86400));
-        $tep = pow(1 + $tea, $dias / 360) - 1;
-        $dp = $tep / (1 + $tep);
-        $desc = $monto * $dp;
-        $Vneto = $monto - $desc;
+        if($f_adelanto != ''){
+            $d_rh['f_adelanto'] = $f_adelanto;
+            $descuento = json_decode($this->CI->tasa_descontada->descuento($total, $d_rh['retencion'], $f_pago, $f_adelanto, $empresa['id']));
 
-        // $costos = $this->CI->m_costo->mostrar_cuando(array('empresa_id' => $empresa['id']));
-        $costos = $this->CI->m_costo->listar(FALSE, array('empresa_id' => $empresa['id']));
-        $cIniciales = 0;
-        $cFinales = 0;
-        foreach ($costos as $c) {
-            $cIniciales += $c['inicial'] ? $c['monto'] : 0;
-            $cFinales += $c['inicial'] ? 0 : $c['monto'];
+            $d_rh['costos_iniciales'] = $descuento->cIniciales;
+            $d_rh['costos_finales'] = $descuento->cFinales;
+            $d_rh['neto'] = $descuento->neto;
+            $d_rh['tea'] = $descuento->tea;
+            $d_rh['tcea'] = $descuento->tcea;
         }
-
-        $d_rh['costos_iniciales'] = $cIniciales;
-        $d_rh['costos_finales'] = $cFinales;
-        $d_rh['neto'] = $Vneto;
 
         $result = $this->CI->m_recibo_honorario->agregar($d_rh);
         

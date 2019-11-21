@@ -37,7 +37,7 @@ class Cartera extends CI_Controller {
         $listado = $this->b_rh->listar_cartera($fecha, $empleado_doc, $this->items['session']['sys_id']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
-        $this->table->set_heading('F. Emisión', 'F. Pago', 'F. Adelanto', 'Empresa', 'Monto', 'Estado');
+        $this->table->set_heading('F. Emisión', 'F. Pago', 'F. Adelanto', 'Empresa', 'Monto', 'TCEA', 'Estado');
         $data['tabla'] = $this->table->generate($listado);
         $data['cartera'] = TRUE;
         $data['cartera_emp'] = TRUE;

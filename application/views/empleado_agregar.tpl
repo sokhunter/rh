@@ -11,7 +11,7 @@
 						<div class="form-group row">
 							<label for="documento" class="col-4 col-form-label">N° Documento</label>
 							<div class="col-4">
-								<input type="text" name="dni" class="form-control" id="documento" placeholder="N° Documento"  value="{if isset($registro)}{$registro.documento}{/if}">
+								<input type="text" name="dni" class="form-control documento" id="documento" placeholder="N° Documento"  value="{if isset($registro)}{$registro.documento}{/if}">
 							</div>
 							<div class="col-2">
 								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="3">Validar</a>
