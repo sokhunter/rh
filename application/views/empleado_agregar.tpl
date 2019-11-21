@@ -41,6 +41,18 @@
 								<input type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="{if isset($registro)}{$registro.email}{/if}">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label for="password" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clave" class="form-control" id="password" placeholder="Contraseña" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="repassword" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clavem" class="form-control" id="repassword" placeholder="Contraseña" value="">
+							</div>
+						</div>
 						{if isset($session_id)}
 						<div class="form-group row">
 							<label for="cargo" class="col-4 col-form-label">Cargo</label>

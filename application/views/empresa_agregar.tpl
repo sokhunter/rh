@@ -13,9 +13,6 @@
 							<div class="col-4">
 								<input type="text" name="documento" class="form-control documento" id="documento" placeholder="RUC"  value="{if isset($registro)}{$registro.documento}{/if}">
 							</div>
-							<!-- <div class="col-2">
-								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="2">Validar</a>
-							</div> -->
 						</div>
 						<div class="form-group row">
 							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
@@ -33,6 +30,18 @@
 							<label for="direccion" class="col-4 col-form-label">Dirección</label>
 							<div class="col-8">
 								<input type="text" name="direccion" class="form-control validacion_doc" id="direccion" placeholder="Dirección" value="{if isset($registro)}{$registro.direccion}{/if}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clave" class="form-control" id="password" placeholder="Contraseña" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="repassword" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clavem" class="form-control" id="repassword" placeholder="Contraseña" value="">
 							</div>
 						</div>
 						<input type="hidden" name="id" value="{if isset($registro)}{$registro.id}{/if}">

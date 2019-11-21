@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 14:34:06
+<?php /* Smarty version 3.1.27, created on 2019-11-21 15:16:11
          compiled from "C:\wamp\www\rh\application\views\empleado_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:269815dd6a05e16e0d4_51478990%%*/
+/*%%SmartyHeaderCode:95425dd6aa3bddf188_22468920%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f995f99685e4e853bfb450a5037febd4299d4bd2' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empleado_agregar.tpl',
-      1 => 1574346844,
+      1 => 1574349327,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '269815dd6a05e16e0d4_51478990',
+  'nocache_hash' => '95425dd6aa3bddf188_22468920',
   'variables' => 
   array (
     'get_url' => 0,
@@ -24,13 +24,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd6a05e27ae51_11160374',
+  'unifunc' => 'content_5dd6aa3c1192c7_80853805',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd6a05e27ae51_11160374')) {
-function content_5dd6a05e27ae51_11160374 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6aa3c1192c7_80853805')) {
+function content_5dd6aa3c1192c7_80853805 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '269815dd6a05e16e0d4_51478990';
+$_smarty_tpl->properties['nocache_hash'] = '95425dd6aa3bddf188_22468920';
 ?>
 <div class="container">
 	<p class="h2">
@@ -84,6 +84,18 @@ echo $_smarty_tpl->tpl_vars['registro']->value['a_materno'];
 								<input type="email" name="email" class="form-control validacion_doc" id="email" placeholder="Correo"  value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['email'];
 }?>">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clave" class="form-control" id="password" placeholder="Contraseña" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="repassword" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clavem" class="form-control" id="repassword" placeholder="Contraseña" value="">
 							</div>
 						</div>
 						<?php if (isset($_smarty_tpl->tpl_vars['session_id']->value)) {?>

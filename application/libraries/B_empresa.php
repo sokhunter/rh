@@ -44,11 +44,29 @@ class B_empresa {
         $imagen = $this->CI->input->post('imagen');
         $email = $this->CI->input->post('email');
         $direccion = $this->CI->input->post('direccion');
+        $clave = $this->CI->input->post('clave');
 
         if($this->CI->m_usuario->existe_campo('documento', $ruc)){
             $response['msg'] = "El RUC ingresado ya se encuentra registrado";
             $response['status'] = 400;
             return json_encode($response);
+        }
+
+        if($clave != ""){
+            $this->CI->load->library('form_validation');
+            $this->CI->form_validation->set_rules('clave', 'Contraseña', 'required|min_length[6]');
+            $this->CI->form_validation->set_rules('clavem', 'Confirmar contraseña', 'required|matches[clave]');
+
+            $this->CI->form_validation->set_message('min_length','El campo {field} debe tener como mínimo {param} digitos');
+            $this->CI->form_validation->set_message('matches','El campo {field} no coincide con el campo {param}');
+            $this->CI->form_validation->set_message('required','El campo {field} es obligatorio');
+
+            if(!$this->CI->form_validation->run()){
+                $response['msg'] = validation_errors('<li>', '</li>');
+                $response['status'] = 400;
+                return json_encode($response);
+            }
+            $d_usuario['clave'] = md5($clave);
         }
 
         $d_usuario['email'] = $email;
@@ -59,6 +77,7 @@ class B_empresa {
         $d_usuario['usuario'] = strtolower(str_replace(' ', '', substr($razon_social, 0, 6)));
         $d_usuario['clave'] = md5(trim($ruc));
         $d_usuario['rol_id'] = 2;
+        
         $usuario_id = $this->CI->m_usuario->agregar($d_usuario);
         $d_empresa['id'] = $usuario_id;
         $result = $this->CI->m_empresa->agregar($d_empresa);
@@ -84,11 +103,29 @@ class B_empresa {
         $imagen = $this->CI->input->post('imagen');
         $email = $this->CI->input->post('email');
         $direccion = $this->CI->input->post('direccion');
+        $clave = $this->CI->input->post('clave');
 
         if($this->CI->m_usuario->existe_campo('documento', $ruc, $id)){
             $response['msg'] = "El RUC ingresado ya se encuentra registrado";
             $response['status'] = 400;
             return json_encode($response);
+        }
+
+        if($clave != ""){
+            $this->CI->load->library('form_validation');
+            $this->CI->form_validation->set_rules('clave', 'Contraseña', 'required|min_length[6]');
+            $this->CI->form_validation->set_rules('clavem', 'Confirmar contraseña', 'required|matches[clave]');
+
+            $this->CI->form_validation->set_message('min_length','El campo {field} debe tener como mínimo {param} digitos');
+            $this->CI->form_validation->set_message('matches','El campo {field} no coincide con el campo {param}');
+            $this->CI->form_validation->set_message('required','El campo {field} es obligatorio');
+
+            if(!$this->CI->form_validation->run()){
+                $response['msg'] = validation_errors('<li>', '</li>');
+                $response['status'] = 400;
+                return json_encode($response);
+            }
+            $d_usuario['clave'] = md5($clave);
         }
 
         $d_usuario['email'] = $email;

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 14:37:08
+<?php /* Smarty version 3.1.27, created on 2019-11-21 14:59:32
          compiled from "C:\wamp\www\rh\application\views\empresa_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:285525dd6a11491a720_35110163%%*/
+/*%%SmartyHeaderCode:74575dd6a654baca44_83810527%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '230f90ddd94261d31279f43bfe407daab897a0e0' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\empresa_agregar.tpl',
-      1 => 1574346856,
+      1 => 1574348359,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '285525dd6a11491a720_35110163',
+  'nocache_hash' => '74575dd6a654baca44_83810527',
   'variables' => 
   array (
     'get_url' => 0,
@@ -21,13 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd6a1149c6741_84399752',
+  'unifunc' => 'content_5dd6a654c2e3f0_84390545',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd6a1149c6741_84399752')) {
-function content_5dd6a1149c6741_84399752 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6a654c2e3f0_84390545')) {
+function content_5dd6a654c2e3f0_84390545 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '285525dd6a11491a720_35110163';
+$_smarty_tpl->properties['nocache_hash'] = '74575dd6a654baca44_83810527';
 ?>
 <div class="container">
 	<p class="h2">
@@ -47,9 +47,6 @@ empresa/guardar" method="post">
 echo $_smarty_tpl->tpl_vars['registro']->value['documento'];
 }?>">
 							</div>
-							<!-- <div class="col-2">
-								<a href="#" id="validar_documento" class="btn btn-secondary btn-sm" data-type="2">Validar</a>
-							</div> -->
 						</div>
 						<div class="form-group row">
 							<label for="razon_social" class="col-4 col-form-label">Razón Social</label>
@@ -73,6 +70,18 @@ echo $_smarty_tpl->tpl_vars['registro']->value['email'];
 								<input type="text" name="direccion" class="form-control validacion_doc" id="direccion" placeholder="Dirección" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['direccion'];
 }?>">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clave" class="form-control" id="password" placeholder="Contraseña" value="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="repassword" class="col-4 col-form-label">Contraseña</label>
+							<div class="col-8">
+								<input type="password" name="clavem" class="form-control" id="repassword" placeholder="Contraseña" value="">
 							</div>
 						</div>
 						<input type="hidden" name="id" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {

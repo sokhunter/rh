@@ -99,7 +99,11 @@ class Empleado extends CI_Controller {
         // FIN VALIDACIONES
 
         if(!$this->m_usuario->existe_campo('documento', $dni)){
-            $this->b_empleado->agregar();
+            $response = json_decode($this->b_empleado->agregar());
+            if($response->status == 400){
+                echo mensaje_error($response->msg);
+                EXIT;
+            }
         }
         $response = json_decode($this->b_empresa->agregar_empleado());
         echo mensaje_exito($response->msg);

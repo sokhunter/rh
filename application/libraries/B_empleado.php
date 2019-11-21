@@ -34,11 +34,29 @@ class B_empleado {
         $dni = $this->CI->input->post('dni');
         $cargo = $this->CI->input->post('cargo');
         $email = $this->CI->input->post('email');
+        $clave = $this->CI->input->post('clave');
 
         if($this->CI->m_usuario->existe_campo('documento', $dni)){
             $response['msg'] = "El DNI ingresado ya se encuentra registrado";
             $response['status'] = 400;
             return json_encode($response);
+        }
+        $d_usuario['clave'] = md5($dni);
+        if($clave != ""){
+            $this->CI->load->library('form_validation');
+            $this->CI->form_validation->set_rules('clave', 'Contraseña', 'required|min_length[6]');
+            $this->CI->form_validation->set_rules('clavem', 'Confirmar contraseña', 'required|matches[clave]');
+
+            $this->CI->form_validation->set_message('min_length','El campo {field} debe tener como mínimo {param} digitos');
+            $this->CI->form_validation->set_message('matches','El campo {field} no coincide con el campo {param}');
+            $this->CI->form_validation->set_message('required','El campo {field} es obligatorio');
+
+            if(!$this->CI->form_validation->run()){
+                $response['msg'] = validation_errors('<li>', '</li>');
+                $response['status'] = 400;
+                return json_encode($response);
+            }
+            $d_usuario['clave'] = md5($clave);
         }
 
         $d_usuario['email'] = $email;
@@ -72,8 +90,31 @@ class B_empleado {
         $a_materno = $this->CI->input->post('a_materno');
         $dni = $this->CI->input->post('dni');
         $email = $this->CI->input->post('email');
+        $clave = $this->CI->input->post('clave');
+
+        if($this->CI->m_usuario->existe_campo('documento', $dni, $id)){
+            $response['msg'] = "El DNI ingresado ya se encuentra registrado";
+            $response['status'] = 400;
+            return json_encode($response);
+        }
         
-        //validar dni duplicado
+        if($clave != ""){
+            $this->CI->load->library('form_validation');
+            $this->CI->form_validation->set_rules('clave', 'Contraseña', 'required|min_length[6]');
+            $this->CI->form_validation->set_rules('clavem', 'Confirmar contraseña', 'required|matches[clave]');
+
+            $this->CI->form_validation->set_message('min_length','El campo {field} debe tener como mínimo {param} digitos');
+            $this->CI->form_validation->set_message('matches','El campo {field} no coincide con el campo {param}');
+            $this->CI->form_validation->set_message('required','El campo {field} es obligatorio');
+
+            if(!$this->CI->form_validation->run()){
+                $response['msg'] = validation_errors('<li>', '</li>');
+                $response['status'] = 400;
+                return json_encode($response);
+            }
+            $d_usuario['clave'] = md5($clave);
+        }
+
         $d_usuario['email'] = $email;
         $d_usuario['documento'] = $dni;
         $d_empleado['nombre'] = $nombre;
