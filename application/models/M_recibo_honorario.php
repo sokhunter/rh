@@ -16,7 +16,7 @@ class M_recibo_honorario extends Modelo_DB {
     }
 
     public function listar_por_empresa($id = ''){
-    	$this->CI->db->select('t.id, f_emision, f_pago, f_adelanto, CONCAT(e.nombre, " ", e.a_paterno, " ", e.a_materno) AS empleado, CONCAT(m.simbolo, t.total) as total');
+    	$this->CI->db->select('t.id, pagado, f_emision, f_pago, f_adelanto, CONCAT(e.nombre, " ", e.a_paterno, " ", e.a_materno) AS empleado, CONCAT(m.simbolo, t.total) as total, tipo');
     	$this->CI->db->from($this->tabla . " " . $this->alias);
     	$this->CI->db->join('empleado e', 'e.id = t.empleado_id', 'join');
     	$this->CI->db->join('moneda m', 'm.id = t.moneda_id', 'join');
@@ -25,7 +25,7 @@ class M_recibo_honorario extends Modelo_DB {
     }
 
     public function listar_por_empleado($id = ''){
-        $this->CI->db->select('t.id, f_emision, f_pago, f_adelanto, e.razon_social, CONCAT(m.simbolo, t.total) as total');
+        $this->CI->db->select('t.id, pagado, f_emision, f_pago, f_adelanto, e.razon_social, CONCAT(m.simbolo, t.total) as total, tipo');
         $this->CI->db->from($this->tabla . " " . $this->alias);
         $this->CI->db->join('empresa e', 'e.id = t.empresa_id', 'join');
         $this->CI->db->join('moneda m', 'm.id = t.moneda_id', 'join');
@@ -41,6 +41,7 @@ class M_recibo_honorario extends Modelo_DB {
         $this->CI->db->join('moneda m', 'm.id = t.moneda_id', 'join');
         $this->CI->db->where('u.documento', $empleado_doc);
         $this->CI->db->where('t.f_emision', $fecha);
+        $this->CI->db->where('t.f_adelanto !=', '');
         if($empresa_id != ''){
             $this->CI->db->where('t.empresa_id', $empresa_id);
         }

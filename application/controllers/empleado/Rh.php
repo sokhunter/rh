@@ -33,7 +33,7 @@ class Rh extends CI_Controller {
         $listado = $this->b_rh->listar_por_empleado($this->items['session']['sys_id']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
-        $this->table->set_heading('F. Emisión', 'F. Pago', 'F. Adelanto', 'Empresa', 'Monto', 'Estado');
+        $this->table->set_heading('F. Emisión', 'F. Pago', 'F. Adelanto', 'Empresa', 'Monto', 'Seguro', 'Estado');
         $data['tabla'] = $this->table->generate($listado);
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);
@@ -62,6 +62,11 @@ class Rh extends CI_Controller {
         $response = "No se pudo procesar la acción";
         $response = $this->b_rh->agregar();
         echo $response;
+        echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'rh/listar');
+    }
+
+    public function pagar($id=""){
+        $this->m_recibo_honorario->editar(array("pagado" => 1), $id);
         echo direccionar(base_url() . '/' . $this->items['session']['sys_rol'] . '/' . 'rh/listar');
     }
 

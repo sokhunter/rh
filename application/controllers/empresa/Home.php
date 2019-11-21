@@ -33,7 +33,7 @@ class Home extends CI_Controller {
         $listado = $this->b_rh->listar_por_empresa($this->items['session']['sys_id']);
         $template = array('table_open' => '<table class="table datatable">');
         $this->table->set_template($template);
-        $this->table->set_heading('F. Emision', 'F. Pago', 'Empleado', 'Monto');
+        $this->table->set_heading('F. Emision', 'F. Pago', 'Empleado', 'Monto', 'Seguro');
         $data['tabla'] = $this->table->generate($listado);
         // ------------------------------------------------------------ //
         $data = array_merge($data, $this->items);

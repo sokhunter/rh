@@ -20,6 +20,7 @@ class B_rh {
         foreach ($listado as $l) {
             unset($listado[$i]['id']);
             unset($listado[$i]['f_adelanto']);
+            unset($listado[$i]['pagado']);
             $i++;
         }
         return $listado;
@@ -29,8 +30,13 @@ class B_rh {
         $listado = $this->CI->m_recibo_honorario->listar_por_empleado($empleado_id);
         $i = 0;
         foreach ($listado as $l) {
-            $listado[$i]['btn'] = '<a href="' . $url . 'rh/pago/' . $l['id'] . '" class="btn btn-sm btn-info">Ingresar Pago</a>';
+            if($l['pagado'] == 0){
+                $listado[$i]['btn'] = '<a href="' . $url . 'rh/pago/' . $l['id'] . '" class="btn btn-sm btn-info">Ingresar Pago</a>';
+            }else{
+                $listado[$i]['btn'] = 'Pagado';
+            }
             unset($listado[$i]['id']);
+            unset($listado[$i]['pagado']);
             $i++;
         }
         return $listado;
@@ -64,6 +70,7 @@ class B_rh {
         $retencion = $this->CI->input->post('retencion');
         $moneda = $this->CI->input->post('moneda');
         $total = $this->CI->input->post('total');
+        $tipo = $this->CI->input->post('tipo');
 
         // VALIDACIONES
         $empresa = $this->CI->m_usuario->mostrar('t.documento', $documento);
@@ -80,6 +87,7 @@ class B_rh {
         $d_rh['costos_iniciales'] = 0;
         $d_rh['costos_finales'] = 0;
         $d_rh['neto'] = 0;
+        $d_rh['tipo'] = $tipo;
         if($retencion == 'on'){
             $d_rh['retencion'] = round($total * 0.08, 2);
             $d_rh['neto'] = round($total - $total * 0.08, 2);

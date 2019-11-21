@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-21 10:00:55
+<?php /* Smarty version 3.1.27, created on 2019-11-21 16:06:04
          compiled from "C:\wamp\www\rh\application\views\rh_agregar.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:279105dd6605703d1a4_69992176%%*/
+/*%%SmartyHeaderCode:203135dd6b5ec72e634_40067324%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5a77e8ba58c0c6620f45be653ec8a954c664b94' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\rh_agregar.tpl',
-      1 => 1574330444,
+      1 => 1574352362,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '279105dd6605703d1a4_69992176',
+  'nocache_hash' => '203135dd6b5ec72e634_40067324',
   'variables' => 
   array (
     'get_url' => 0,
@@ -26,13 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd66057246a38_06909044',
+  'unifunc' => 'content_5dd6b5ec8c93c6_50369237',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd66057246a38_06909044')) {
-function content_5dd66057246a38_06909044 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6b5ec8c93c6_50369237')) {
+function content_5dd6b5ec8c93c6_50369237 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '279105dd6605703d1a4_69992176';
+$_smarty_tpl->properties['nocache_hash'] = '203135dd6b5ec72e634_40067324';
 ?>
 <div class="container">
 	<p class="h2">
@@ -173,6 +173,17 @@ echo $_smarty_tpl->tpl_vars['registro']->value['total'];
 }?>">
 								</div>
 							</div>
+
+							<div class="form-group row">
+								<label for="tipo" class="col-4 col-form-label">Tipo</label>
+								<div class="col-2">
+									<select name="tipo" class="form-control" id="tipo" placeholder="Tipo">
+										<option <?php if (isset($_smarty_tpl->tpl_vars['registro']->value) && $_smarty_tpl->tpl_vars['registro']->value['tipo'] == "AFP") {?>selected=""<?php }?> value="A">AFP</option>
+										<option <?php if (isset($_smarty_tpl->tpl_vars['registro']->value) && $_smarty_tpl->tpl_vars['registro']->value['tipo'] == "ONP") {?>selected=""<?php }?> value="B">ONP</option>
+									</select>
+								</div>
+							</div>
+
 							<input type="hidden" name="id" value="<?php if (isset($_smarty_tpl->tpl_vars['registro']->value)) {
 echo $_smarty_tpl->tpl_vars['registro']->value['id'];
 }?>">

@@ -109,8 +109,8 @@ $("#nextBtn").on("click", function(){
 		retencion = (total * 0.08).toFixed(2);
 		neto = (total - retencion).toFixed(2);
 	}
-	totales += "<p><b>(" + retencion + ")</b><b> " + $("#moneda").text() + "</b></p>";
-	totales += "<p><b>" + neto + "</b><b> " + $("#moneda").text() + "</b></p>";
+	totales += "<p><b>(" + retencion + ")</b><b> " + $('select[name="moneda"] option:selected').text() + "</b></p>";
+	totales += "<p><b>" + neto + "</b><b> " + $('select[name="moneda"] option:selected').text() + "</b></p>";
 	$(".rh_totales").html(totales);
 	$(".rh_fecha").html($("#f_emision").val());
 });

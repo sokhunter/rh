@@ -91,6 +91,17 @@
 									<input type="number" min="0" step=".01" name="total" class="form-control moneda required" id="total" placeholder="Monto"  value="{if isset($registro)}{$registro.total}{/if}">
 								</div>
 							</div>
+
+							<div class="form-group row">
+								<label for="tipo" class="col-4 col-form-label">Tipo</label>
+								<div class="col-2">
+									<select name="tipo" class="form-control" id="tipo" placeholder="Tipo">
+										<option {if isset($registro) && $registro.tipo=="AFP"}selected=""{/if} value="AFP">AFP</option>
+										<option {if isset($registro) && $registro.tipo=="ONP"}selected=""{/if} value="ONP">ONP</option>
+									</select>
+								</div>
+							</div>
+
 							<input type="hidden" name="id" value="{if isset($registro)}{$registro.id}{/if}">
 						</div>
 						<div class="tab" style="color: #6c757d">
