@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 
         parent::__construct();
         $library = array('session');
-        $helper = array('url');
+        $helper = array('url', 'alerta');
         $this->load->library($library);
         $this->load->helper($helper);
 
@@ -28,11 +28,11 @@ class Login extends CI_Controller {
         $email = $this->input->post('email');
         $clave = $this->input->post('clave');
         // VALIDACIONES
-        $usuario = $this->m_usuario->mostrar(array("email" => $email, "clave" => md5($clave)));
+        $usuario = $this->m_usuario->mostrar(array("documento" => $email, "clave" => md5($clave)));
         
         if(count($usuario) <= 0) {
-            // echo mensaje_error("Datos incorrectos");
-            echo "Datos incorrectos";
+            echo mensaje_error("Datos incorrectos");
+            // echo "Datos incorrectos";
             EXIT;
         }
         $rol = $this->m_rol->mostrar('id', $usuario['rol_id']);

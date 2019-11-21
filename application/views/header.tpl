@@ -54,6 +54,9 @@
                     {$menu}
                 {/if}
 				<ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="btn bg-info text-white" href="{$base_url}auth/perfil/editar">Perfil <span class="sr-only">(current)</span></a>
+                    </li>
 					<li class="nav-item active">
 						<a class="btn bg-dark text-white" href="{$base_url}auth/login/salir">Salir <span class="sr-only">(current)</span></a>
 					</li>

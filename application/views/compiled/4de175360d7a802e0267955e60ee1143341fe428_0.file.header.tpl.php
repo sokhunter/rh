@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-11-17 23:19:05
+<?php /* Smarty version 3.1.27, created on 2019-11-21 15:27:39
          compiled from "C:\wamp\www\rh\application\views\header.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:55375dd1d56909eb41_45922883%%*/
+/*%%SmartyHeaderCode:140495dd6aceb4bacd2_06518042%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4de175360d7a802e0267955e60ee1143341fe428' => 
     array (
       0 => 'C:\\wamp\\www\\rh\\application\\views\\header.tpl',
-      1 => 1574032730,
+      1 => 1574350056,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '55375dd1d56909eb41_45922883',
+  'nocache_hash' => '140495dd6aceb4bacd2_06518042',
   'variables' => 
   array (
     'titulo_pagina' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5dd1d56914fcc0_87677568',
+  'unifunc' => 'content_5dd6aceb55bda2_46116042',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5dd1d56914fcc0_87677568')) {
-function content_5dd1d56914fcc0_87677568 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5dd6aceb55bda2_46116042')) {
+function content_5dd6aceb55bda2_46116042 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '55375dd1d56909eb41_45922883';
+$_smarty_tpl->properties['nocache_hash'] = '140495dd6aceb4bacd2_06518042';
 ?>
 <!DOCTYPE html>
 <html class="html-full">
@@ -98,6 +98,10 @@ public/css/style.css">
 
                 <?php }?>
 				<ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="btn bg-info text-white" href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+auth/perfil/editar">Perfil <span class="sr-only">(current)</span></a>
+                    </li>
 					<li class="nav-item active">
 						<a class="btn bg-dark text-white" href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 auth/login/salir">Salir <span class="sr-only">(current)</span></a>
